@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 @Entity
 public class predictionrule{
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String ruleName;
     private int averageDaysWindow;
