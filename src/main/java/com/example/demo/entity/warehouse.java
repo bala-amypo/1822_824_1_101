@@ -12,7 +12,7 @@ public class warehouse{
    private String warehouseName;
    @NotNull
    private String location; 
-   private String createdAt;
+   private LocalDateTime createdAt;
 
    public long getId(){
         return id;
@@ -32,7 +32,12 @@ public class warehouse{
     public void setlocation(){
         this.location=location;
     }
-    public String getcreatedAt(){
+    public LocalDateTime getcreatedAt(){
         return createdAt;
     }
+    public void setcreatedAt(){
+        this.createdAt=createdAt;
+    }
+
+    public warehouse
 }
