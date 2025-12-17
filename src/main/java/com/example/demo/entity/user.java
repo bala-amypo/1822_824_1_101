@@ -45,4 +45,15 @@ public class user{
     public void setcreatedAt(){
         this.createdAt=createdAt;
     }
+
+     public warehouse(long id,String name,String email,String password,LocalDateTime createdAt){
+        this.id=id;
+        this.name=name;
+        this.email=email;
+        this.location=location;
+        this.createdAt=createdAt;
+    }
+    public empty(){
+        
+    }
 }
