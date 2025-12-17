@@ -39,5 +39,5 @@ public class warehouse{
         this.createdAt=createdAt;
     }
 
-    public warehouse
+    public warehouse()
 }
