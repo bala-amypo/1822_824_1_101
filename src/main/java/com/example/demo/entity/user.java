@@ -18,31 +18,31 @@ public class user{
     public long getId(){
         return id;
     }
-    public void setId(){
+    public void setId(long id){
         this.id=id;
     }
     public String getname(){
         return name;
     }
-    public void setname(){
+    public void setname(String name){
         this.name=name;
     }
     public String getemail(){
         return email;
     }
-    public void setemail(){
+    public void setemail(String email){
         this.email=email;
     }
     public String getpassword(){
         return password;
     }
-    public void setcategory(){
+    public void setcategory(String password){
         this.password=password;
     }
     public LocalDateTime getcreatedAt(){
         return createdAt;
     }
-    public void setcreatedAt(){
+    public void setcreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
 
