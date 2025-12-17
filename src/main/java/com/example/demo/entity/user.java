@@ -1,4 +1,6 @@
 package.com.example.demo.entity;
+
+@Entity
 public class user{
     private long id;
     private String name;
