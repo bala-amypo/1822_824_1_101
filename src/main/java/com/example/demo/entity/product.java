@@ -54,5 +54,7 @@ public class product{
         this.category=category;
         this.createdAt=createdAt;
     }
-    
+    public empty(){
+        
+    }
 }

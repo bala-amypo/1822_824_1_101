@@ -22,7 +22,7 @@ public class predictionrule{
         this.id=id;
     }
     public String getruleName(){
-        return ruleNameName;
+        return ruleName;
     }
     public void setruleName(){
         this.ruleName=ruleName;
@@ -33,7 +33,7 @@ public class predictionrule{
     public void setaverageDaysWindow(){
         this.averageDaysWindow=averageDaysWindow;
     }
-    public String getmaxDailyUsage(){
+    public int getmaxDailyUsage(){
         return maxDailyUsage;
     }
     public void setmaxDailyUsage(){
@@ -43,6 +43,13 @@ public class predictionrule{
         return createdAt;
     }
     public void setcreatedAt(){
+        this.createdAt=createdAt;
+    }
+     public warehouse(long id,String ruleName,String averageDaysWindow,int maxDailyUsage, LocalDateTime createdAt){
+        this.id=id;
+        this.ruleName=ruleName;
+        this.averageDaysWindow=averageDaysWindow;
+        this.maxDailyUsage=maxDailyUsage;
         this.createdAt=createdAt;
     }
 }
