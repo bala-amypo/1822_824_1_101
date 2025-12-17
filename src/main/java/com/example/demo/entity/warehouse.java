@@ -17,25 +17,25 @@ public class warehouse{
    public long getId(){
         return id;
     }
-    public void setId(){
+    public void setId(long id){
         this.id=id;
     }
     public String getwarehouseName(){
         return warehouseName;
     }
-    public void setwarehouseName(){
+    public void setwarehouseName(String warehouseName){
         this.warehouseName=warehouseName;
     }
     public String getlocation(){
         return location;
     }
-    public void setlocation(){
+    public void setlocation(String location){
         this.location=location;
     }
     public LocalDateTime getcreatedAt(){
         return createdAt;
     }
-    public void setcreatedAt(){
+    public void setcreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
 
