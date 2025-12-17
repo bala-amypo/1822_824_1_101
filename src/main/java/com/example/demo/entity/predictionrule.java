@@ -18,31 +18,31 @@ public class predictionrule{
     public long getId(){
         return id;
     }
-    public void setId(){
+    public void setId(long id){
         this.id=id;
     }
     public String getruleName(){
         return ruleName;
     }
-    public void setruleName(){
+    public void setruleName(String ruleName){
         this.ruleName=ruleName;
     }
     public int  getaverageDaysWindows(){
         return averageDaysWindow;
     }
-    public void setaverageDaysWindow(){
+    public void setaverageDaysWindow(int averageDaysWindow){
         this.averageDaysWindow=averageDaysWindow;
     }
     public int getmaxDailyUsage(){
         return maxDailyUsage;
     }
-    public void setmaxDailyUsage(){
+    public void setmaxDailyUsage(int maxDailyUsage){
         this.maxDailyUsage=maxDailyUsage;
     }
     public LocalDateTime getcreatedAt(){
         return createdAt;
     }
-    public void setcreatedAt(){
+    public void setcreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
      public predictionrule(long id,String ruleName,String averageDaysWindow,int maxDailyUsage, LocalDateTime createdAt){

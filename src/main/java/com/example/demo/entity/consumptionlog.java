@@ -14,19 +14,19 @@ public class consumptionlog{
     public long getId(){
         return id;
     }
-    public void setId(){
+    public void setId(long id){
         this.id=id;
     }
     public int getconsumedQuantity(){
         return consumedQuantity;
     }
-    public void setconsumedQuantity(){
+    public void setconsumedQuantity(int consumedQuantity){
         this.consumedQuantity=consumedQuantity;
     }
     public String getconsumedDate(){
         return consumedDate;
     }
-    public void setconsumedDate(){
+    public void setconsumedDate(String consumedDate){
         this.consumedDate=consumedDate;
     }
      public consumptionlog(long id,int consumedQuantity,String consumedDate){

@@ -20,31 +20,31 @@ public class product{
     public long getId(){
         return id;
     }
-    public void setId(){
+    public void setId(long id){
         this.id=id;
     }
     public String getproductName(){
         return productName;
     }
-    public void setproductName(){
+    public void setproductName(String productName){
         this.productName=productName;
     }
     public String getsku(){
         return sku;
     }
-    public void setsku(){
+    public void setsku(String sku){
         this.sku=sku;
     }
     public String getcategory(){
         return category;
     }
-    public void setcategory(){
+    public void setcategory(String category){
         this.category=category;
     }
     public LocalDateTime getcreatedAt(){
         return createdAt;
     }
-    public void setcreatedAt(){
+    public void setcreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
      public product(long id,String productName,String sku, String category,LocalDateTime createdAt){
