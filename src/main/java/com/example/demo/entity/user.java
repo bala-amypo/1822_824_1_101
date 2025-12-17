@@ -13,19 +13,19 @@ public class user{
     public void setId(){
         this.id=id;
     }
-    public String getproductName(){
-        return productName;
+    public String getname(){
+        return name;
     }
-    public void setproductName(){
-        this.productName=productName;
+    public void setname(){
+        this.name=name;
     }
-    public String getsku(){
-        return sku;
+    public String getemail(){
+        return email;
     }
-    public void setsku(){
-        this.sku=sku;
+    public void setemail(){
+        this.email=email;
     }
-    public String getcategory(){
+    public String getpassword(){
         return password;
     }
     public void setcategory(){
