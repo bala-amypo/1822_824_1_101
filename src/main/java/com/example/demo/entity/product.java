@@ -30,5 +30,10 @@ public class product{
     public void setcategory(){
         this.category=category;
     }
-    public LocalDateTime getcreat
+    public LocalDateTime getcreatedAt(){
+        return createdAt;
+    }
+    public void setcreatedAt(){
+        this.createdAt=createdAt;
+    }
 }
