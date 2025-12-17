@@ -15,22 +15,20 @@ public class StockRecord{
     public int getcurrentQuantity(){
         return currentQuantity;
     }
-    public void set(){
-        this.productName=productName;
+    public void setcurrentQuantity(){
+        this.currentQuantity=currentQuantity;
     }
-    public String getsku(){
-        return sku;
+    public int getreorderThreshold(){
+        return reorderThreshold;
     }
-    public void setsku(){
-        this.sku=sku;
+    public void setreorderThreshold(){
+        this.reorderThreshold=reorderThreshold;
     }
-    public String getcategory(){
-        return category;
+    public String getlastUpdated(){
+        return lastUpdated;
     }
-    public void setcategory(){
-        this.category=category;
+    public void setlastUpdated(){
+        this.lastUpdated=lastUpdated;
     }
-    public String getcreatedAt(){
-        return createdAt;
-    }
+    
 }
