@@ -11,23 +11,17 @@ public class warehouse{
     public void setId(){
         this.id=id;
     }
-    public String getproductName(){
-        return productName;
+    public String getwarehouseName(){
+        return warehouseName;
     }
-    public void setproductName(){
-        this.productName=productName;
+    public void setwarehouseName(){
+        this.warehouseName=warehouseName;
     }
-    public String getsku(){
-        return sku;
+    public String getlocation(){
+        return location;
     }
-    public void setsku(){
-        this.sku=sku;
-    }
-    public String getcategory(){
-        return category;
-    }
-    public void setcategory(){
-        this.category=category;
+    public void setlocation(){
+        this.location=location;
     }
     public String getcreatedAt(){
         return createdAt;
