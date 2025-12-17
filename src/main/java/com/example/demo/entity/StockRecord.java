@@ -18,25 +18,25 @@ public class StockRecord{
     public long getId(){
         return id;
     }
-    public void setId(){
+    public void setId(long id){
         this.id=id;
     }
     public int getcurrentQuantity(){
         return currentQuantity;
     }
-    public void setcurrentQuantity(){
+    public void setcurrentQuantity(int currentQuantity){
         this.currentQuantity=currentQuantity;
     }
     public int getreorderThreshold(){
         return reorderThreshold;
     }
-    public void setreorderThreshold(){
+    public void setreorderThreshold(int reorderThreshold){
         this.reorderThreshold=reorderThreshold;
     }
     public LocalDateTime getlastUpdated(){
         return lastUpdated;
     }
-    public void setlastUpdated(){
+    public void setlastUpdated(LocalDateTime lastUpdated){
         this.lastUpdated=lastUpdated;
     }
     
