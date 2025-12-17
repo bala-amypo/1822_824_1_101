@@ -10,7 +10,9 @@ public class product{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
+    @NotNull
     private String productName;
+    @Column(unique=true)
     private String sku;
     private String category;
     private String createdAt;
