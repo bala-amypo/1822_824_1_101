@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 
 @Entity
 public class product{
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String productName;
     private String sku;
