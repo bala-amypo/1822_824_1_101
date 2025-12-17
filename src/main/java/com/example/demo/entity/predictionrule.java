@@ -17,9 +17,9 @@ public class predictionrule{
         return ruleNameName;
     }
     public void setproductName(){
-        this.ruleName=productName;
+        this.ruleName=ruleName;
     }
-    public String getsku(){
+    public int  getaverage(){
         return sku;
     }
     public void setsku(){
