@@ -47,4 +47,12 @@ public class product{
     public void setcreatedAt(){
         this.createdAt=createdAt;
     }
+     public warehouse(long id,String productName,String sku, String category,LocalDateTime createdAt){
+        this.id=id;
+        this.productName=productName;
+        this.sku=sku;
+        this.category=category;
+        this.createdAt=createdAt;
+    }
+    
 }
