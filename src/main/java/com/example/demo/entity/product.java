@@ -15,7 +15,7 @@ public class product{
     @Column(unique=true)
     private String sku;
     private String category;
-    private String createdAt;
+    private LocalDateTime createdAt;
 
     public long getId(){
         return id;
@@ -41,7 +41,7 @@ public class product{
     public void setcategory(){
         this.category=category;
     }
-    public String getcreatedAt(){
+    public LocalDateTime getcreatedAt(){
         return createdAt;
     }
     public void setcreatedAt(){

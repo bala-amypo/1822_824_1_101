@@ -3,6 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import 
 @Entity
 public class predictionrule{
     @Id
@@ -12,7 +13,7 @@ public class predictionrule{
     private String ruleName;
     private int averageDaysWindow;
     private int maxDailyUsage;
-    private String createdAt;
+    private LocalDateTime createdAt;
 
     public long getId(){
         return id;
@@ -23,22 +24,25 @@ public class predictionrule{
     public String getruleName(){
         return ruleNameName;
     }
-    public void setproductName(){
+    public void setruleName(){
         this.ruleName=ruleName;
     }
-    public int  getaverage(){
-        return sku;
+    public int  getaverageDaysWindows(){
+        return averageDaysWindow;
     }
-    public void setsku(){
-        this.sku=sku;
+    public void setaverageDaysWindow(){
+        this.averageDaysWindow=averageDaysWindow;
     }
-    public String getcategory(){
-        return category;
+    public String getmaxDailyUsage(){
+        return maxDailyUsage;
     }
-    public void setcategory(){
-        this.category=category;
+    public void setmaxDailyUsage(){
+        this.maxDailyUsage=maxDailyUsage;
     }
-    public String getcreatedAt(){
+    public LocalDateTime getcreatedAt(){
         return createdAt;
+    }
+    public void setcreatedAt(){
+        this.createdAt=createdAt;
     }
 }

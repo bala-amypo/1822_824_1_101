@@ -8,10 +8,12 @@ import jakarta.persistence.GenerationType;
 
 @Entity
 public class StockRecord{
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private int currentQuantity;
     private int reorderThreshold;
-    private String lastUpdated;
+    private LocalDateTime lastUpdated;
 
     public long getId(){
         return id;
@@ -31,7 +33,7 @@ public class StockRecord{
     public void setreorderThreshold(){
         this.reorderThreshold=reorderThreshold;
     }
-    public String getlastUpdated(){
+    public LocalDateTime getlastUpdated(){
         return lastUpdated;
     }
     public void setlastUpdated(){

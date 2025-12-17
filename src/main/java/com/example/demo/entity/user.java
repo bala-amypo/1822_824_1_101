@@ -42,4 +42,7 @@ public class user{
     public LocalDateTime getcreatedAt(){
         return createdAt;
     }
+    public void setcreatedAt(){
+        this.createdAt=createdAt;
+    }
 }
