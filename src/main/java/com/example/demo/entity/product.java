@@ -4,7 +4,7 @@ public class product{
     private String productName;
     private String sku;
     private String category;
-    private LocalDateTime createdAt;
+    private String createdAt;
 
     public long getId(){
         return id;
@@ -30,7 +30,7 @@ public class product{
     public void setcategory(){
         this.category=category;
     }
-    public LocalDateTime getcreatedAt(){
+    public String getcreatedAt(){
         return createdAt;
     }
     public void setcreatedAt(){
