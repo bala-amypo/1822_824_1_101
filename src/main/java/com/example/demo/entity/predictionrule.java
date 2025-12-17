@@ -8,6 +8,7 @@ public class predictionrule{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
+    @Column(unique=true)
     private String ruleName;
     private int averageDaysWindow;
     private int maxDailyUsage;

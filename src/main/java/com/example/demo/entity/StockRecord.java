@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 @Entity
 public class StockRecord{
     private long id;
-    @Id
     private int currentQuantity;
     private int reorderThreshold;
     private String lastUpdated;
