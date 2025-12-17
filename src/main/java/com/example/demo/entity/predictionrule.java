@@ -45,14 +45,14 @@ public class predictionrule{
     public void setcreatedAt(){
         this.createdAt=createdAt;
     }
-     public warehouse(long id,String ruleName,String averageDaysWindow,int maxDailyUsage, LocalDateTime createdAt){
+     public predictionrule(long id,String ruleName,String averageDaysWindow,int maxDailyUsage, LocalDateTime createdAt){
         this.id=id;
         this.ruleName=ruleName;
         this.averageDaysWindow=averageDaysWindow;
         this.maxDailyUsage=maxDailyUsage;
         this.createdAt=createdAt;
     }
-    public empty(){
-        
+    public predictionrule(){
+
     }
 }

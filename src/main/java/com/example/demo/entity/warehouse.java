@@ -45,7 +45,7 @@ public class warehouse{
         this.location=location;
         this.createdAt=createdAt;
     }
-    public empty(){
+    public warehouse(){
 
     }
 }
