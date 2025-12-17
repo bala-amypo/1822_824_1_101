@@ -52,4 +52,7 @@ public class predictionrule{
         this.maxDailyUsage=maxDailyUsage;
         this.createdAt=createdAt;
     }
+    public empty(){
+        
+    }
 }

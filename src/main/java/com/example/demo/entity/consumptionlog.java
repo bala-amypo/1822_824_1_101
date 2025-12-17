@@ -29,5 +29,11 @@ public class consumptionlog{
     public void setconsumedDate(){
         this.consumedDate=consumedDate;
     }
+     public warehouse(long id,int consumedQuantity,String consumedDate){
+        this.id=id;
+        this.warehouseName=warehouseName;
+        this.location=location;
+        this.createdAt=createdAt;
+    }
    
 }
