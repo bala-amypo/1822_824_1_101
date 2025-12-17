@@ -12,24 +12,16 @@ public class consumptionlog{
         this.id=id;
     }
     public int getconsumedQuantity(){
-        return consumed;
+        return consumedQuantity;
     }
-    public void setproductName(){
-        this.productName=productName;
+    public void setconsumedQuantity(){
+        this.consumedQuantity=consumedQuantity;
     }
-    public String getsku(){
-        return sku;
+    public String getconsumedDate(){
+        return consumedDate;
     }
-    public void setsku(){
-        this.sku=sku;
+    public void setconsumedDate(){
+        this.consumedDate=consumedDate;
     }
-    public String getcategory(){
-        return category;
-    }
-    public void setcategory(){
-        this.category=category;
-    }
-    public String getcreatedAt(){
-        return createdAt;
-    }
+   
 }
