@@ -9,7 +9,7 @@ public class consumptionlog{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private int consumedQuantity;
-    private String consumedDate;
+    private LocalDateTime consumedDate;
 
     public long getId(){
         return id;
@@ -23,7 +23,7 @@ public class consumptionlog{
     public void setconsumedQuantity(int consumedQuantity){
         this.consumedQuantity=consumedQuantity;
     }
-    public String getconsumedDate(){
+    public LocalDateTime getconsumedDate(){
         return consumedDate;
     }
     public void setconsumedDate(String consumedDate){
