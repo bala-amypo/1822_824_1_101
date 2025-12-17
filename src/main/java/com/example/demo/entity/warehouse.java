@@ -39,5 +39,13 @@ public class warehouse{
         this.createdAt=createdAt;
     }
 
-    public warehouse()
+    public warehouse(long id,String warehouseName,String location,LocalDateTime createdAt){
+        this.id=id;
+        this.warehouseName=warehouseName;
+        this.location=location;
+        this.createdAt=createdAt;
+    }
+    public empty(){
+
+    }
 }
