@@ -45,7 +45,7 @@ public class predictionrule{
     public void setcreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
-     public predictionrule(long id,String ruleName,String averageDaysWindow,int maxDailyUsage, LocalDateTime createdAt){
+     public predictionrule(long id,String ruleName,int averageDaysWindow,int maxDailyUsage, LocalDateTime createdAt){
         this.id=id;
         this.ruleName=ruleName;
         this.averageDaysWindow=averageDaysWindow;

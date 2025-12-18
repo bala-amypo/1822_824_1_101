@@ -1,3 +1,3 @@
-private class StockRecordService{
+public class StockRecordService{
     
 }
