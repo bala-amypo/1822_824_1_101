@@ -3,20 +3,20 @@ import java.util.List;
 import com.example.demo.service.StockRecordService;
 import org.springframework.stereotype.Service;
 import com.example.demo.entity.stockrecord;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.StockRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class UserImplementation implements UserService{
+public class StockRecordImplementation implements StockRecordService{
   @Autowired
-  UserRepository obj;
+  StockRecordRepository obj;
 
-  public user creatuser(user user){
-    return obj.save(user);
+  public stockrecord creatstockrecord(stockrecord stockrec){
+    return obj.save(stockrec);
   }
-  public user getuserid(Long id){
+  public stockrecord getstockrecordid(Long id){
     return obj.findById(id).orElse(null);
   }
-  public List<user>getAllusers(){
+  public List<stockrecord>getAllstockrecords(){
     return obj.findAll();
   }
 }
