@@ -1,3 +1,3 @@
-public class productservice{
+private class productservice{
     
 }

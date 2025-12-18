@@ -1,3 +1,3 @@
-public class UserService{
+private class UserService{
     
 }

@@ -1,3 +1,3 @@
-public class PredictionService{
+private class PredictionService{
     
 }
