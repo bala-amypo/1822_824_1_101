@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface StockRecordService{
     stockrecord createstockrecord(stockrecord stockrec);
-    stockrec getstockrecordid(Long id);
-    List<consumptionlog> getAllconsumptionlog();
+    stockrecord getstockrecordid(Long id);
+    List<stockrecord> getAllstockrecord();
 }
