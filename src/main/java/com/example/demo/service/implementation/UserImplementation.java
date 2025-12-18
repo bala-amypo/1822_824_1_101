@@ -1,22 +1,22 @@
 package com.example.demo.service.implementation;
 import java.util.List;
-import com.example.demo.service.WarehouseService;
+import com.example.demo.service.UserService;
 import org.springframework.stereotype.Service;
-import com.example.demo.entity.warehouse;
-import com.example.demo.repository.WarehouseRepository;
+import com.example.demo.entity.user;
+import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class WarehouseImplementation implements WarehouseService{
+public class UserImplementation implements UserService{
   @Autowired
-  WarehouseRepository obj;
+  UserRepository obj;
 
-  public warehouse createwarehouse(warehouse ware){
-    return obj.save(ware);
+  public user creatuser(user user){
+    return obj.save(user);
   }
-  public warehouse getwarehouseid(Long id){
+  public user getuserid(Long id){
     return obj.findById(id).orElse(null);
   }
-  public List<warehouse>getAllwarehouses(){
+  public List<user>getAllusers(){
     return obj.findAll();
   }
 }
