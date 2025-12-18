@@ -1,13 +1,10 @@
 package com.example.demo.service.implementation;
 import java.util.List;
-import com.example.demo.service
-
-
-
-
-
-
-
+import com.example.demo.service.WarehouseService;
+import org.springframework.stereotype.Service;
+import com.example.demo.entity.warehouse;
+import com.example.demo.repository.WarehouseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class WarehouseImplementation implements WarehouseService{
   @Autowired
