@@ -10,7 +10,7 @@ public class StockRecordImplementation implements StockRecordService{
   @Autowired
   StockRecordRepository obj;
 
-  public stockrecord creatstockrecord(stockrecord stockrec){
+  public stockrecord createstockrecord(stockrecord stockrec){
     return obj.save(stockrec);
   }
   public stockrecord getstockrecordid(Long id){

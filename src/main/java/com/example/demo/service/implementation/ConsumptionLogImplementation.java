@@ -10,13 +10,13 @@ public class ConsumptionLogImplementation implements ConsumptionLogService{
   @Autowired
   ConsumptionLogRepository obj;
 
-  public C creatuser(user user){
-    return obj.save(user);
+  public consumptionlog createconsumptionlog(consumptionlog log){
+    return obj.save(log);
   }
-  public user getuserid(Long id){
+  public consumptionlog getconsumptionlogid(Long id){
     return obj.findById(id).orElse(null);
   }
-  public List<user>getAllusers(){
+  public List<consumptionlog>getAllconsumptionlogs(){
     return obj.findAll();
   }
 }

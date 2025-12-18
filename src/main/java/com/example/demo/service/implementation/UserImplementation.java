@@ -10,7 +10,7 @@ public class UserImplementation implements UserService{
   @Autowired
   UserRepository obj;
 
-  public user creatuser(user user){
+  public user createuser(user user){
     return obj.save(user);
   }
   public user getuserid(Long id){

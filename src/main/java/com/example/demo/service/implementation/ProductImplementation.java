@@ -10,7 +10,7 @@ public class ProductImplementation implements ProductService{
   @Autowired
  ProductRepository obj;
 
-  public product creatproduct(product prod){
+  public product createproduct(product prod){
     return obj.save(prod);
   }
   public product getproductid(Long id){

@@ -10,7 +10,7 @@ public class PredictionImplementation implements PredictionService{
   @Autowired
   PredictionRuleRepository obj;
 
-  public predictionrule creatuser(predictionrule pred){
+  public predictionrule createpredictionrule(predictionrule pred){
     return obj.save(pred);
   }
   public predictionrule getpredictionruleid(Long id){
