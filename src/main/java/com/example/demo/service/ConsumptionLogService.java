@@ -1,3 +1,3 @@
-private class ConsumptionLogService{
+public class ConsumptionLogService{
     
 }

@@ -1,3 +1,3 @@
-private class WarehouseService{
+public class WarehouseService{
     
 }

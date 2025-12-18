@@ -11,7 +11,7 @@ public class user{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
     private String name;
-    @column(unique=true)
+    @Column(unique=true)
     private String email;
     private String password;
     private LocalDateTime createdAt;
@@ -52,7 +52,7 @@ public class user{
         this.id=id;
         this.name=name;
         this.email=email;
-        this.location=location;
+        this.password=password;
         this.createdAt=createdAt;
     }
     public user(){
