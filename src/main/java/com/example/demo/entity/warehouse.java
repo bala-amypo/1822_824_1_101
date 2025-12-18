@@ -4,7 +4,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
-import
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotNull;
 @Entity
 public class warehouse{
    @Id

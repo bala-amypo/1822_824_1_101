@@ -27,10 +27,10 @@ public class consumptionlog{
     public LocalDateTime getconsumedDate(){
         return consumedDate;
     }
-    public void setconsumedDate(String consumedDate){
+    public void setconsumedDate(LocalDateTime consumedDate){
         this.consumedDate=consumedDate;
     }
-     public consumptionlog(long id,int consumedQuantity,String consumedDate){
+     public consumptionlog(long id,int consumedQuantity,LocalDateTime consumedDate){
         this.id=id;
         this.consumedQuantity=consumedQuantity;
         this.consumedDate=consumedDate;
