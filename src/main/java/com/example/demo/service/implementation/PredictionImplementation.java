@@ -6,17 +6,17 @@ import com.example.demo.entity.predictionrule;
 import com.example.demo.repository.PredictionRulerepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class PredictionImplementation implements UserService{
+public class PredictionImplementation implements PredictionService{
   @Autowired
-  UserRepository obj;
+  PredictionRuleRepository obj;
 
-  public user creatuser(user user){
-    return obj.save(user);
+  public predictionrule creatuser(predictionrule pred){
+    return obj.save(pred);
   }
-  public user getuserid(Long id){
+  public predictionrule getpredictionruleid(Long id){
     return obj.findById(id).orElse(null);
   }
-  public List<user>getAllusers(){
+  public List<predictionrule>getAllpredictionrules(){
     return obj.findAll();
   }
 }
