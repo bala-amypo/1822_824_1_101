@@ -40,7 +40,7 @@ public class PredictionController{
             return "predictionrule deleted successfully";
         }
         else{
-            return "warehouse not found.";
+            return "predictionrule not found.";
         }
     }
 
