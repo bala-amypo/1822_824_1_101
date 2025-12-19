@@ -1,3 +1,3 @@
-public class PredictionRuleRepository{
+public interface PredictionRuleRepository JpaRepository{
     
 }
