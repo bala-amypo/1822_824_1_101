@@ -6,9 +6,9 @@ import com.example.demo.entity.StockRecord;
 import com.example.demo.repository.StockRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public interface StockRecordImplementation implements StockRecordService{
+public class StockRecordImplementation implements StockRecordService{
   @Autowired
-  StockRecordRepository obj;
+  private StockRecordRepository obj;
 
   public StockRecord createStockRecord(StockRecord stockrec){
     return obj.save(stockrec);

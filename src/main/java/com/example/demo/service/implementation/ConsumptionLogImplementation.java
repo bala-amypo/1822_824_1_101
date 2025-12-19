@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class ConsumptionLogImplementation implements ConsumptionLogService {
     @Autowired
-    ConsumptionLogRepository obj;
+    private ConsumptionLogRepository obj;
 
   public consumptionlog createconsumptionlog(consumptionlog clog){
     return obj.save(clog);

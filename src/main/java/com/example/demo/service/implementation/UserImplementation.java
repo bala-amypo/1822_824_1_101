@@ -6,9 +6,9 @@ import com.example.demo.entity.user;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public interface UserImplementation implements UserService{
+public class UserImplementation implements UserService{
   @Autowired
-  UserRepository obj;
+   private UserRepository obj;
 
   public user createuser(user user){
     return obj.save(user);
