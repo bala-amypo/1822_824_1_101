@@ -6,6 +6,6 @@ import com.example.demo.model.WorkflowStepConfigRepository;
 import java.util.Long;
 
 @Repository
-public Interface ProductRepository extends JpaRepository{
+public interface ProductRepository extends JpaRepository{
     
 }

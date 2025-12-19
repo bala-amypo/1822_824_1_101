@@ -6,7 +6,8 @@ import com.example.demo.model.WorkflowStepConfigRepository;
 import java.util.Long;
 
 @Repository
-public interface PredictionRuleRepository JpaRepository{
+public interface PredictionRuleRepository extends JpaRepository {
+
+}
 
     
-}
