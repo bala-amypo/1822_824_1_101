@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.user;
+import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 
 @RestController
@@ -18,25 +18,25 @@ public class AuthController{
     private UserService use;
 
     @PostMapping("/adduser")
-    public user adduser(@RequestBody user user){
+    public User addUser(@RequestBody User user){
         return use.adduser(user);
     }
 
     @GetMapping("/getuser")
-    public List<user> getusers(){
-        return use.getusers();
+    public List<User> getUsers(){
+        return use.getUsers();
     }
 
     @GetMapping("/getuser/{id}")
-    public user getuserById(@PathVariable Long id){
-        return use.getuserById(id);
+    public User getUserById(@PathVariable Long id){
+        return use.getUserById(id);
     }
 
     @DeleteMapping("/deleteuser/{id}")
-    public String deleteuserById(@PathVariable Long id){
-        user user=use.getuserById(id);
+    public String deleteUserById(@PathVariable Long id){
+        User user=use.getUserById(id);
         if(user!=null){
-           use.deleteuserById(id);
+           use.deleteUserById(id);
             return "user deleted successfully";
         }
         else{

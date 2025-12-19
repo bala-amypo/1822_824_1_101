@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 @Entity
-public class user{
+public class User{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
@@ -48,14 +48,14 @@ public class user{
         this.createdAt=createdAt;
     }
 
-     public user(long id,String name,String email,String password,LocalDateTime createdAt){
+     public User(long id,String name,String email,String password,LocalDateTime createdAt){
         this.id=id;
         this.name=name;
         this.email=email;
         this.password=password;
         this.createdAt=createdAt;
     }
-    public user(){
+    public User(){
 
     }
 }
