@@ -34,13 +34,13 @@ public class AuthController{
 
     @DeleteMapping("/deleteuser/{id}")
     public String deleteuserById(@PathVariable Long id){
-        user user=user.getconsumptionlogById(id);
-        if(consumptionlog!=null){
-           clog.deleteconsumptionlogById(id);
-            return "consumptionlog deleted successfully";
+        user user=user.getuserById(id);
+        if(user!=null){
+           user.deleteuserById(id);
+            return "user deleted successfully";
         }
         else{
-            return "consumptionlog not found.";
+            return "user not found.";
         }
     }
 
