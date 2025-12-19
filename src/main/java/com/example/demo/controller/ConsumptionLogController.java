@@ -18,23 +18,23 @@ public class ConsumptionLogController{
     ConsumptionLogService clog;
 
     @PostMapping("/addconsumptionlog")
-    public ConsumptionLog addConsumptionLog(@RequestBody consumptionlog conslog){
-        return clog.addconsumptionlog(conslog);
+    public ConsumptionLog addConsumptionLog(@RequestBody ConsumptionLog conslog){
+        return clog.addConsumptionLog(conslog);
     }
 
     @GetMapping("/getconsuptionlog")
-    public List<consumptionlog> getconsumptionlogs(){
-        return clog.getconsumptionlogs();
+    public List<ConsumptionLog> getConsumptionLogs(){
+        return clog.getConsumptionLogs();
     }
 
     @GetMapping("/getconsumptionlog/{id}")
-    public consumptionlog getconsumptionlogById(@PathVariable Long id){
-        return clog.getconsumptionlogById(id);
+    public ConsumptionLog getConsumptionLogById(@PathVariable Long id){
+        return clog.getConsumptionLogById(id);
     }
 
     @DeleteMapping("/deleteconsumptionlog/{id}")
-    public String deleteconsumptionlogById(@PathVariable Long id){
-        consumptionlog consumptionlog=clog.getconsumptionlogById(id);
+    public String deleteConsumptionLogById(@PathVariable Long id){
+        ConsumptionLog Consumptionlog=clog.getconsumptionlogById(id);
         if(consumptionlog!=null){
            clog.deleteconsumptionlogById(id);
             return "consumptionlog deleted successfully";

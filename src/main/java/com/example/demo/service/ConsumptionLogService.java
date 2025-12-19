@@ -1,9 +1,9 @@
 package com.example.demo.service;
-import com.example.demo.entity.consumptionlog;
+import com.example.demo.entity.ConsumptionLog;
 import java.util.List;
 
 public interface ConsumptionLogService{
-    consumptionlog createconsumptionlog(consumptionlog conslog);
-    consumptionlog getconsumptionlogid(Long id);
-    List<consumptionlog> getAllconsumptionlog();
+    ConsumptionLog createConsumptionLog(ConsumptionLog conslog);
+    ConsumptionLog getConsumptionLogid(Long id);
+    List<ConsumptionLog> getAllConsumptionLog();
 }
