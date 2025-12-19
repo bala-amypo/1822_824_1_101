@@ -34,7 +34,7 @@ public class ConsumptionLogController{
 
     @DeleteMapping("/deleteconsumptionlog/{id}")
     public String deleteconsumptionlogById(@PathVariable Long id){
-        predictionrule predictionrule=pred.getpredictionruleById(id);
+        consumptionlog consumptionlog=clog.getpredictionruleById(id);
         if(predictionrule!=null){
            pred.deletepredictionruleById(id);
             return "predictionrule deleted successfully";
