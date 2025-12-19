@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.consumptionlog;
+import com.example.demo.entity.ConsumptionLog;
 import com.example.demo.service.ConsumptionLogService;
 
 @RestController
@@ -18,7 +18,7 @@ public class ConsumptionLogController{
     ConsumptionLogService clog;
 
     @PostMapping("/addconsumptionlog")
-    public consumptionlog addconsumptionlog(@RequestBody consumptionlog conslog){
+    public ConsumptionLog addConsumptionLog(@RequestBody consumptionlog conslog){
         return clog.addconsumptionlog(conslog);
     }
 

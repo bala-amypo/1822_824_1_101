@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
 @Entity
-public class consumptionlog{
+public class ConsumptionLog{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
@@ -30,12 +30,12 @@ public class consumptionlog{
     public void setconsumedDate(LocalDateTime consumedDate){
         this.consumedDate=consumedDate;
     }
-     public consumptionlog(long id,int consumedQuantity,LocalDateTime consumedDate){
+     public ConsumptionLog(long id,int consumedQuantity,LocalDateTime consumedDate){
         this.id=id;
         this.consumedQuantity=consumedQuantity;
         this.consumedDate=consumedDate;
     }
-    public consumptionlog(){
+    public ConsumptionLog(){
 
     }
    

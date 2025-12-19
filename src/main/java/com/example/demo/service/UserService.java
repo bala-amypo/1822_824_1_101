@@ -3,7 +3,7 @@ import com.example.demo.entity.User;
 import java.util.List;
 
 public interface UserService{
-    user createuser(user user);
-    user getuserid(Long id);
-    List<user> getAlluser();
+    User createuser(User user);
+    User getuserid(Long id);
+    List<User> getAllUser();
 }

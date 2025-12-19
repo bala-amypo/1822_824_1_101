@@ -2,7 +2,7 @@ package com.example.demo.service.implementation;
 import java.util.List;
 import com.example.demo.service.UserService;
 import org.springframework.stereotype.Service;
-import com.example.demo.entity.user;
+import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
@@ -10,13 +10,13 @@ public abstract class UserImplementation implements UserService{
   @Autowired
    private UserRepository obj;
 
-  public user createuser(user user){
+  public User createUser(User user){
     return obj.save(user);
   }
-  public user getuserid(Long id){
+  public User getUserid(Long id){
     return obj.findById(id).orElse(null);
   }
-  public List<user>getAllusers(){
+  public List<User>getAllUsers(){
     return obj.findAll();
   }
 }
