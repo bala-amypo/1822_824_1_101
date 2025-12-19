@@ -18,23 +18,23 @@ public class StockRecordController{
     StockRecordService storec;
 
     @PostMapping("/addStock")
-    public StockRecord addStockRecord(@RequestBody product product){
-        return prod.addProducts(product);
+    public StockRecord addStockRecord(@RequestBody StockRecord stock){
+        return storec.addStockRecord(stock);
     }
 
-    @GetMapping("/getProducts")
-    public List<product> getProducts(){
-        return prod.getProducts();
+    @GetMapping("/getStockRecord")
+    public List<StockRecord> getStockRecords(){
+        return storec.getStockRecords();
     }
 
-    @GetMapping("/getProduct/{id}")
-    public product getProductById(@PathVariable Long id){
-        return prod.getProductById(id);
+    @GetMapping("/getStockRecord/{id}")
+    public StockRecord getStockRecordtById(@PathVariable Long id){
+        return storec.getStockRecordById(id);
     }
 
-    @DeleteMapping("/deleteProduct/{id}")
-    public String deleteProductById(@PathVariable Long id){
-        product product=prod.getProductById(id);
+    @DeleteMapping("/deleteStockRecord/{id}")
+    public String deleteStockRecordById(@PathVariable Long id){
+         product=prod.getProductById(id);
         if(product!=null){
             prod.deleteProductById(id);
             return "Product deleted successfully";
