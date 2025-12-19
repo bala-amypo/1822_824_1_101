@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import jakarta.validation.constraints.NotNull;
 import jakarta.persistence.Column;
 @Entity
-public class product{
+public class Product{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
@@ -49,14 +49,14 @@ public class product{
     public void setcreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
-     public product(long id,String productName,String sku, String category,LocalDateTime createdAt){
+     public Product(long id,String productName,String sku, String category,LocalDateTime createdAt){
         this.id=id;
         this.productName=productName;
         this.sku=sku;
         this.category=category;
         this.createdAt=createdAt;
     }
-    public product(){
+    public Product(){
 
     }
 }

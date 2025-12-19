@@ -1,9 +1,9 @@
 package com.example.demo.service;
-import com.example.demo.entity.predictionrule;
+import com.example.demo.entity.PredictionRule;
 import java.util.List;
 
 public interface PredictionService{
-    predictionrule createconsumptionlog(predictionrule prerule);
-    predictionrule getpredictionruleid(Long id);
-    List<predictionrule> getAllpredictionrule();
+    PredictionRule createPredictionRule(PredictionRule prerule);
+    PredictionRule getPredictionRuleid(Long id);
+    List<PredictionRule> getAllPredictionRule();
 }

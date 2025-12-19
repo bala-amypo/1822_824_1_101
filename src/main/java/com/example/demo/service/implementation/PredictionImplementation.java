@@ -10,13 +10,13 @@ public  abstract class PredictionImplementation implements PredictionService{
   @Autowired
   private PredictionRuleRepository obj;
 
-  public PredictionRule createpredictionrule(predictionrule pred){
+  public PredictionRule createPredictionRule(PredictionRule pred){
     return obj.save(pred);
   }
-  public predictionrule getpredictionruleid(Long id){
+  public PredictionRule getPredictionRuleid(Long id){
     return obj.findById(id).orElse(null);
   }
-  public List<predictionrule>getAllpredictionrules(){
+  public List<Predictionrule>getAllPredictionRules(){
     return obj.findAll();
   }
 }
