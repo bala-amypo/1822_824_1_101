@@ -27,17 +27,17 @@ public class PredictionController{
         return pred.getpredictionrules();
     }
 
-    @GetMapping("/getwarehouse/{id}")
-    public warehouse getwarehouseById(@PathVariable Long id){
-        return ware.getwarehouseById(id);
+    @GetMapping("/getpredicitonrule/{id}")
+    public predictionrule getpredictionruleById(@PathVariable Long id){
+        return pred.getpredictionruleById(id);
     }
 
     @DeleteMapping("/deletepredictionrule/{id}")
     public String deletepredictionruleById(@PathVariable Long id){
-        predictionrule warehouse=warer.getwarehouseById(id);
-        if(warehouse!=null){
-            prod.deletewarehouseById(id);
-            return "warehouse deleted successfully";
+        predictionrule predictionrule=pred.getpredictionruleById(id);
+        if(predictionrule!=null){
+           pred.deletepredictionruleById(id);
+            return "predictionrule deleted successfully";
         }
         else{
             return "warehouse not found.";

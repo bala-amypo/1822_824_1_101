@@ -34,9 +34,9 @@ public class WarehouseController{
 
     @DeleteMapping("/deletewarehouse/{id}")
     public String deletewarehouseById(@PathVariable Long id){
-        warehouse warehouse=warer.getwarehouseById(id);
+        warehouse warehouse=ware.getwarehouseById(id);
         if(warehouse!=null){
-            prod.deletewarehouseById(id);
+            ware.deletewarehouseById(id);
             return "warehouse deleted successfully";
         }
         else{
