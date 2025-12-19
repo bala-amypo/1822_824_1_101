@@ -19,12 +19,12 @@ public class PredictionController{
 
     @PostMapping("/addprediction")
     public predictionrule addpredictionrule(@RequestBody predictionrule prediction){
-        return pred.addpredictionrule();
+        return pred.addpredictionrule(prediction);
     }
 
-    @GetMapping("/getwarehouse")
-    public List<warehouse> getwarehouses(){
-        return ware.getwarehouses();
+    @GetMapping("/getprediction")
+    public List<predictionrule> getpredictionrules(){
+        return pred.getpredictionrules();
     }
 
     @GetMapping("/getwarehouse/{id}")
@@ -32,9 +32,9 @@ public class PredictionController{
         return ware.getwarehouseById(id);
     }
 
-    @DeleteMapping("/deletewarehouse/{id}")
-    public String deletewarehouseById(@PathVariable Long id){
-        warehouse warehouse=warer.getwarehouseById(id);
+    @DeleteMapping("/deletepredictionrule/{id}")
+    public String deletepredictionruleById(@PathVariable Long id){
+        predictionrule warehouse=warer.getwarehouseById(id);
         if(warehouse!=null){
             prod.deletewarehouseById(id);
             return "warehouse deleted successfully";
