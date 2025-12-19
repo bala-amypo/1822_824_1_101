@@ -28,5 +28,17 @@ public class ProductController{
     }
 
     @GetMapping("/getProduct/{id}")
-    public product getProductById(@PathVariable Long id)
+    public product getProductById(@PathVariable Long id){
+        return prod.getProductById(id);
+    }
+
+    @DeleteMapping("/deleteProduct/{id}")
+    public String deleteProductById(@PathVariable Long id){
+        product product=prod.getProductById(id);
+        if(product!=null){
+            prod.get
+        }
+    }
+
+
 }
