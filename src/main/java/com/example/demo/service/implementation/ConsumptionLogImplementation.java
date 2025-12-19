@@ -6,7 +6,7 @@ import com.example.demo.entity.consumptionlog;
 import com.example.demo.repository.ConsumptionLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class ConsumptionLogImplementation implements ConsumptionLogService {
+public abstract class ConsumptionLogImplementation implements ConsumptionLogService {
     @Autowired
     private ConsumptionLogRepository obj;
 

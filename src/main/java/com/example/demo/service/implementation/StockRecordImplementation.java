@@ -6,7 +6,7 @@ import com.example.demo.entity.StockRecord;
 import com.example.demo.repository.StockRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class StockRecordImplementation implements StockRecordService{
+public abstract class StockRecordImplementation implements StockRecordService{
   @Autowired
   private StockRecordRepository obj;
 
