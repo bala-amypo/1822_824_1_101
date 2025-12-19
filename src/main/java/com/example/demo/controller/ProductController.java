@@ -36,7 +36,11 @@ public class ProductController{
     public String deleteProductById(@PathVariable Long id){
         product product=prod.getProductById(id);
         if(product!=null){
-            prod.get
+            prod.deleteProductById(id);
+            return "Product deleted successfully";
+        }
+        else{
+            return "Product not found.";
         }
     }
 
