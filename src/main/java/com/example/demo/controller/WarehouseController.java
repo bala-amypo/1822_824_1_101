@@ -23,24 +23,24 @@ public class WarehouseController{
     }
 
     @GetMapping("/getwarehouse")
-    public List<warehouse> getStockRecords(){
-        return storec.getStockRecords();
+    public List<warehouse> getwarehouses(){
+        return ware.getwarehouses();
     }
 
-    @GetMapping("/getStockRecord/{id}")
-    public StockRecord getStockRecordtById(@PathVariable Long id){
-        return storec.getStockRecordById(id);
+    @GetMapping("/getwarehouse/{id}")
+    public warehouse getwarehouseById(@PathVariable Long id){
+        return ware.getwarehouseById(id);
     }
 
-    @DeleteMapping("/deleteStockRecord/{id}")
-    public String deleteStockRecordById(@PathVariable Long id){
-        StockRecord StockRecord=storec.getStockRecordById(id);
-        if(StockRecord!=null){
-            prod.deleteStockRecordById(id);
-            return "StockRecord deleted successfully";
+    @DeleteMapping("/deletewarehouse/{id}")
+    public String deletewarehouseById(@PathVariable Long id){
+        warehouse warehouse=warer.getwarehouseById(id);
+        if(warehouse!=null){
+            prod.deletewarehouseById(id);
+            return "warehouse deleted successfully";
         }
         else{
-            return "StockRecord not found.";
+            return "warehouse not found.";
         }
     }
 
