@@ -19,6 +19,14 @@ public class ProductController{
 
     @PostMapping("/addProducts")
     public product addProducts(@RequestBody product product){
-        return prod.addProducts()
+        return prod.addProducts(product);
     }
+
+    @GetMapping("/getProducts")
+    public List<product> getProducts(){
+        return prod.getProducts();
+    }
+
+    @GetMapping("/getProduct/{id}")
+    public product getProductById(@PathVariable Long id)
 }
