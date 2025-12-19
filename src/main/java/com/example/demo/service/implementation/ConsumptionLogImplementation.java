@@ -6,9 +6,9 @@ import com.example.demo.entity.consumptionlog;
 import com.example.demo.repository.ConsumptionLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public interface ConsumptionLogImplementation implements ConsumptionLogService 
-  @Autowired
-  ConsumptionLogRepository obj;
+public interface ConsumptionLogImplementation implements ConsumptionLogService {
+    @Autowired
+    ConsumptionLogRepository obj=;
 
   public consumptionlog createconsumptionlog(consumptionlog clog){
     return obj.save(clog);
@@ -20,3 +20,4 @@ public interface ConsumptionLogImplementation implements ConsumptionLogService
     return obj.findAll();
   }
 }
+ 
