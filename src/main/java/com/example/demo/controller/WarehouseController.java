@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.warehouse;
+import com.example.demo.entity.Warehouse;
 import com.example.demo.service.WarehouseService;
 
 @RestController
@@ -18,17 +18,17 @@ public class WarehouseController{
     WarehouseService ware;
 
     @PostMapping("/addwarehouse")
-    public warehouse addwarehouse(@RequestBody warehouse warehouse){
-        return ware.addwarehouse(warehouse);
+    public Warehouse addWarehouse(@RequestBody Warehouse warehouse){
+        return ware.addWarehouse(warehouse);
     }
 
     @GetMapping("/getwarehouse")
-    public List<warehouse> getwarehouses(){
-        return ware.getwarehouses();
+    public List<Warehouse> getWarehouses(){
+        return ware.getWarehouses();
     }
 
     @GetMapping("/getwarehouse/{id}")
-    public warehouse getwarehouseById(@PathVariable Long id){
+    public Warehouse getWarehouseById(@PathVariable Long id){
         return ware.getwarehouseById(id);
     }
 

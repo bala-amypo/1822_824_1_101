@@ -6,6 +6,6 @@ import com.example.demo.entity.Product;
 // import java.util.Lang;
 
 @Repository
-public interface ProductRepository extends JpaRepository<product, Long>{
+public interface ProductRepository extends JpaRepository<Product, Long>{
     
 }

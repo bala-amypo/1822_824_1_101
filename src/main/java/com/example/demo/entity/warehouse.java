@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 @Entity
-public class warehouse{
+public class Warehouse{
    @Id
    @GeneratedValue(strategy=GenerationType.IDENTITY)
    private long id;
@@ -42,13 +42,13 @@ public class warehouse{
         this.createdAt=createdAt;
     }
 
-    public warehouse(long id,String warehouseName,String location,LocalDateTime createdAt){
+    public Warehouse(long id,String warehouseName,String location,LocalDateTime createdAt){
         this.id=id;
         this.warehouseName=warehouseName;
         this.location=location;
         this.createdAt=createdAt;
     }
-    public warehouse(){
+    public Warehouse(){
 
     }
 }
