@@ -15,26 +15,26 @@ import com.example.demo.service.UserService;
 @RestController
 public class AuthController{
     @Autowired
-    UserService clog;
+    UserService =user;
 
-    @PostMapping("/addconsumptionlog")
-    public consumptionlog addconsumptionlog(@RequestBody consumptionlog conslog){
-        return clog.addconsumptionlog(conslog);
+    @PostMapping("/adduser")
+    public user adduser(@RequestBody user user){
+        return user.adduser(user);
     }
 
-    @GetMapping("/getconsuptionlog")
-    public List<consumptionlog> getconsumptionlogs(){
-        return clog.getconsumptionlogs();
+    @GetMapping("/getuser")
+    public List<user> getusers(){
+        return user.getusers();
     }
 
-    @GetMapping("/getconsumptionlog/{id}")
-    public consumptionlog getconsumptionlogById(@PathVariable Long id){
-        return clog.getconsumptionlogById(id);
+    @GetMapping("/getuser/{id}")
+    public user getuserById(@PathVariable Long id){
+        return user.getuserById(id);
     }
 
-    @DeleteMapping("/deleteconsumptionlog/{id}")
-    public String deleteconsumptionlogById(@PathVariable Long id){
-        consumptionlog consumptionlog=clog.getconsumptionlogById(id);
+    @DeleteMapping("/deleteuser/{id}")
+    public String deleteuserById(@PathVariable Long id){
+        user user=user.getconsumptionlogById(id);
         if(consumptionlog!=null){
            clog.deleteconsumptionlogById(id);
             return "consumptionlog deleted successfully";
