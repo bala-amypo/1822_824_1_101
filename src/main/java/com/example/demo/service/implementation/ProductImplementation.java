@@ -6,7 +6,7 @@ import com.example.demo.entity.product;
 import com.example.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class ProductImplementation implements ProductService{
+public interface ProductImplementation implements ProductService{
   @Autowired
  ProductRepository obj;
 

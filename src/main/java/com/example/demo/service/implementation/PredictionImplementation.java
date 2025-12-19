@@ -6,7 +6,7 @@ import com.example.demo.entity.predictionrule;
 import com.example.demo.repository.PredictionRuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class PredictionImplementation implements PredictionService{
+public interface PredictionImplementation implements PredictionService{
   @Autowired
   PredictionRuleRepository obj;
 
