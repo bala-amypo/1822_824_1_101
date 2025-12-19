@@ -3,9 +3,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.product;
-import java.util.Lang;
+// import java.util.Lang;
 
 @Repository
-public interface ProductRepository extends JpaRepository{
+public interface ProductRepository extends JpaRepository<product, Long>{
     
 }

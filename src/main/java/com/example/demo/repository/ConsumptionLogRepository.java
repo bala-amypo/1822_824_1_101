@@ -6,6 +6,6 @@ import com.example.demo.entity.consumptionlog;
 // import java.util.Lang;
 
 @Repository
-public interface ConsumptionLogRepository extends JpaRepository<{
+public interface ConsumptionLogRepository extends JpaRepository<consumptionlog, Long>{
     
 }

@@ -3,10 +3,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.predictionrule;
-import java.util.Lang;
+// import java.util.Lang;
 
 @Repository
-public interface PredictionRuleRepository extends JpaRepository {
+public interface PredictionRuleRepository extends JpaRepository<predictionrule, Long> {
 
 }
 
