@@ -3,7 +3,7 @@ import java.util.List;
 import com.example.demo.service.PredictionService;
 import org.springframework.stereotype.Service;
 import com.example.demo.entity.predictionrule;
-import com.example.demo.repository.PredictionRulerepository;
+import com.example.demo.repository.PredictionRuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class PredictionImplementation implements PredictionService{

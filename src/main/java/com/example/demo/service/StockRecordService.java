@@ -3,7 +3,7 @@ import com.example.demo.entity.StockRecord;
 import java.util.List;
 
 public interface StockRecordService{
-    Stockrecord createstockrecord(stockrecord stockrec);
-    stockrecord getstockrecordid(Long id);
-    List<stockrecord> getAllstockrecord();
+    StockRecord createStockRecord(StockRecord stockrec);
+    StockRecord getStockRecordid(Long id);
+    List<StockRecord> getAllStockRecord();
 }

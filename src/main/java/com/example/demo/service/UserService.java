@@ -3,7 +3,7 @@ import com.example.demo.entity.user;
 import java.util.List;
 
 public interface UserService{
-    consumptionlog createconsumptionlog(user user);
+    user createuser(user user);
     user getuserid(Long id);
     List<user> getAlluser();
 }
