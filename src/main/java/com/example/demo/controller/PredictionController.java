@@ -33,9 +33,9 @@ public class PredictionController{
     }
 
     @DeleteMapping("/deletepredictionrule/{id}")
-    public String deletepredictionruleById(@PathVariable Long id){
-        predictionrule predictionrule=pred.getpredictionruleById(id);
-        if(predictionrule!=null){
+    public String deletePredictionRuleById(@PathVariable Long id){
+        PredictionRule Predictionrule=pred.getPredictionRuleById(id);
+        if(Predictionrule!=null){
            pred.deletepredictionruleById(id);
             return "predictionrule deleted successfully";
         }
