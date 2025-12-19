@@ -1,3 +1,3 @@
-public interface StockRecordRepository extends JpaRepository{
+// public interface StockRecordRepository extends JpaRepository{
     
-}
+// }

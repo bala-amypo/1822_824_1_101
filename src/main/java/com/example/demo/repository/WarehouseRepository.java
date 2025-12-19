@@ -1,3 +1,3 @@
-public interface WarehouseRepository extends JpaRepository{
+// public interface WarehouseRepository extends JpaRepository{
     
-}
+// }

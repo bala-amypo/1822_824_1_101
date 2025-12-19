@@ -1,3 +1,3 @@
-public interface UserRepository extends JpaRepository{
+// public interface UserRepository extends JpaRepository{
     
-}
+// }

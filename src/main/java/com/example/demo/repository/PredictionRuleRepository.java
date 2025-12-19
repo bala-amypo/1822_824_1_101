@@ -1,4 +1,4 @@
-public interface PredictionRuleRepository JpaRepository{
+// public interface PredictionRuleRepository JpaRepository{
+
     
-    
-}
+// }
