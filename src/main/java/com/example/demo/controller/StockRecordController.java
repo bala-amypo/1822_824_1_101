@@ -34,13 +34,13 @@ public class StockRecordController{
 
     @DeleteMapping("/deleteStockRecord/{id}")
     public String deleteStockRecordById(@PathVariable Long id){
-         product=prod.getProductById(id);
-        if(product!=null){
-            prod.deleteProductById(id);
-            return "Product deleted successfully";
+        StockRecord StockRecord=storec.getStockRecordById(id);
+        if(StockRecord!=null){
+            prod.deleteStockRecordById(id);
+            return "StockRecord deleted successfully";
         }
         else{
-            return "Product not found.";
+            return "StockRecord not found.";
         }
     }
 
