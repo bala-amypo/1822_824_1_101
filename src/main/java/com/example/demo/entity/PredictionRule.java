@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 @Entity
-public class predictionrule{
+public class PredictionRule{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
@@ -46,14 +46,14 @@ public class predictionrule{
     public void setcreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
-     public predictionrule(long id,String ruleName,int averageDaysWindow,int maxDailyUsage, LocalDateTime createdAt){
+     public PredictionRule(long id,String ruleName,int averageDaysWindow,int maxDailyUsage, LocalDateTime createdAt){
         this.id=id;
         this.ruleName=ruleName;
         this.averageDaysWindow=averageDaysWindow;
         this.maxDailyUsage=maxDailyUsage;
         this.createdAt=createdAt;
     }
-    public predictionrule(){
+    public PredictionRule(){
 
     }
 }

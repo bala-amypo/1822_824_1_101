@@ -10,13 +10,13 @@ public abstract class ConsumptionLogImplementation implements ConsumptionLogServ
     @Autowired
     private ConsumptionLogRepository obj;
 
-  public Consumptionlog createconsumptionlog(consumptionlog clog){
+  public ConsumptionLog createConsumptionLog(ConsumptionLog clog){
     return obj.save(clog);
   }
-  public consumptionlog getconsumptionlogid(Long id){
+  public ConsumptionLog getConsumptionLogid(Long id){
     return obj.findById(id).orElse(null);
   }
-  public List<consumptionlog>getAllconsumptionlogs(){
+  public List<ConsumptionLog>getAllConsumptionLogs(){
     return obj.findAll();
   }
 }
