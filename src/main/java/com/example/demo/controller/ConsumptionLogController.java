@@ -23,17 +23,17 @@ public class ConsumptionLogController{
     }
 
     @GetMapping("/getconsuptionlog")
-    public List<consumptionlog> getpredictionrules(){
-        return pred.getpredictionrules();
+    public List<consumptionlog> getconsumptionlogs(){
+        return clog.getconsumptionlogs();
     }
 
-    @GetMapping("/getpredicitonrule/{id}")
-    public predictionrule getpredictionruleById(@PathVariable Long id){
-        return pred.getpredictionruleById(id);
+    @GetMapping("/getconsumptionlog/{id}")
+    public consumptionlog getconsumptionlogById(@PathVariable Long id){
+        return clog.getconsumptionlogById(id);
     }
 
-    @DeleteMapping("/deletepredictionrule/{id}")
-    public String deletepredictionruleById(@PathVariable Long id){
+    @DeleteMapping("/deleteconsumptionlog/{id}")
+    public String deleteconsumptionlogById(@PathVariable Long id){
         predictionrule predictionrule=pred.getpredictionruleById(id);
         if(predictionrule!=null){
            pred.deletepredictionruleById(id);
