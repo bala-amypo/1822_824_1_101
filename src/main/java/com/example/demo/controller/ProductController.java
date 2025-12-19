@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.product;
+import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
 
 @RestController
@@ -18,23 +18,23 @@ public class ProductController{
     ProductService prod;
 
     @PostMapping("/addProducts")
-    public product addProducts(@RequestBody product product){
+    public Product addProducts(@RequestBody Product product){
         return prod.addProducts(product);
     }
 
     @GetMapping("/getProducts")
-    public List<product> getProducts(){
+    public List<Product> getProducts(){
         return prod.getProducts();
     }
 
     @GetMapping("/getProduct/{id}")
-    public product getProductById(@PathVariable Long id){
+    public Product getProductById(@PathVariable Long id){
         return prod.getProductById(id);
     }
 
     @DeleteMapping("/deleteProduct/{id}")
     public String deleteProductById(@PathVariable Long id){
-        product product=prod.getProductById(id);
+        Product product=prod.getProductById(id);
         if(product!=null){
             prod.deleteProductById(id);
             return "Product deleted successfully";

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.predictionrule;
+import com.example.demo.entity.PredictionRule;
 import com.example.demo.service.PredictionService;
 
 @RestController
@@ -18,25 +18,25 @@ public class PredictionController{
     PredictionService pred;
 
     @PostMapping("/addprediction")
-    public predictionrule addpredictionrule(@RequestBody predictionrule prediction){
-        return pred.addpredictionrule(prediction);
+    public PredictionRule addPredictionRule(@RequestBody PredictionRule prediction){
+        return pred.addPredictionPule(prediction);
     }
 
     @GetMapping("/getprediction")
-    public List<predictionrule> getpredictionrules(){
-        return pred.getpredictionrules();
+    public List<PredictionRule> getPredictionRules(){
+        return pred.getPredictionRules();
     }
 
     @GetMapping("/getpredicitonrule/{id}")
-    public predictionrule getpredictionruleById(@PathVariable Long id){
-        return pred.getpredictionruleById(id);
+    public PredictionRule getPredictionRuleById(@PathVariable Long id){
+        return pred.getPredictionRuleById(id);
     }
 
     @DeleteMapping("/deletepredictionrule/{id}")
     public String deletePredictionRuleById(@PathVariable Long id){
-        PredictionRule Predictionrule=pred.getPredictionRuleById(id);
-        if(Predictionrule!=null){
-           pred.deletepredictionruleById(id);
+        PredictionRule PredictionRule=pred.getPredictionRuleById(id);
+        if(PredictionRule!=null){
+           pred.deletePredictionRuleById(id);
             return "predictionrule deleted successfully";
         }
         else{
