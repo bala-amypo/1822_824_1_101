@@ -1,3 +1,3 @@
-public class ProductRepository{
+public Interface ProductRepository{
     
 }
