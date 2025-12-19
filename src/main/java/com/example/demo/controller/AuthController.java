@@ -15,28 +15,28 @@ import com.example.demo.service.UserService;
 @RestController
 public class AuthController{
     @Autowired
-    UserService user;
+    UserService use;
 
     @PostMapping("/adduser")
     public user adduser(@RequestBody user user){
-        return user.adduser(user);
+        return use.adduser(user);
     }
 
     @GetMapping("/getuser")
     public List<user> getusers(){
-        return user.getusers();
+        return use.getusers();
     }
 
     @GetMapping("/getuser/{id}")
     public user getuserById(@PathVariable Long id){
-        return user.getuserById(id);
+        return use.getuserById(id);
     }
 
     @DeleteMapping("/deleteuser/{id}")
     public String deleteuserById(@PathVariable Long id){
-        user user=user.getuserById(id);
+        user user=use.getuserById(id);
         if(user!=null){
-           user.deleteuserById(id);
+           use.deleteuserById(id);
             return "user deleted successfully";
         }
         else{
