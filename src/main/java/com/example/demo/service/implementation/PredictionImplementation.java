@@ -16,7 +16,7 @@ public  abstract class PredictionImplementation implements PredictionService{
   public PredictionRule getPredictionRuleid(Long id){
     return obj.findById(id).orElse(null);
   }
-  public List<Predictionrule>getAllPredictionRules(){
+  public List<PredictionRule>getAllPredictionRules(){
     return obj.findAll();
   }
 }

@@ -1,9 +1,9 @@
 package com.example.demo.service;
-import com.example.demo.entity.warehouse;
+import com.example.demo.entity.Warehouse;
 import java.util.List;
 
 public interface WarehouseService{
-    warehouse createconsumptionlog(warehouse ware);
-    warehouse getwarehouseid(Long id);
-    List<warehouse> getAllwarehouse();
+    Warehouse createWarehouse(Warehouse ware);
+    Warehouse getWarehouseid(Long id);
+    List<Warehouse> getAllWarehouse();
 }
