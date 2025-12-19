@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.warehouse;
-import com.example.demo.service.WarehouseService;
+import com.example.demo.entity.predictionrule;
+import com.example.demo.service.PredictionService;
 
 @RestController
-public class WarehouseController{
+public class PredictionController{
     @Autowired
-    WarehouseService ware;
+    PredictionService pred;
 
-    @PostMapping("/addwarehouse")
-    public Warehouse addWarehouse(@RequestBody Warehouse warehouse){
-        return ware.addwarehouse(warehouse);
+    @PostMapping("/addprediction")
+    public predictionrule addpredictionrule(@RequestBody predictionrule prediction){
+        return pred.addpredictionrule();
     }
 
     @GetMapping("/getwarehouse")
