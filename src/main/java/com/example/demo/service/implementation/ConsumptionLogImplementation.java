@@ -1,22 +1,22 @@
-// package com.example.demo.service.implementation;
-// import java.util.List;
-// import com.example.demo.service.ConsumptionLogService;
-// import org.springframework.stereotype.Service;
-// import com.example.demo.entity.consumptionlog;
-// import com.example.demo.repository.ConsumptionLogRepository;
-// import org.springframework.beans.factory.annotation.Autowired;
-// @Service
-// public class ConsumptionLogImplementation implements ConsumptionLogService{
-//   @Autowired
-//   ConsumptionLogRepository obj;
+package com.example.demo.service.implementation;
+import java.util.List;
+import com.example.demo.service.ConsumptionLogService;
+import org.springframework.stereotype.Service;
+import com.example.demo.entity.consumptionlog;
+import com.example.demo.repository.ConsumptionLogRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+@Service
+public class ConsumptionLogImplementation implements ConsumptionLogService{
+  @Autowired
+  ConsumptionLogRepository obj;
 
-//   public consumptionlog createconsumptionlog(consumptionlog log){
-//     return obj.save(log);
-//   }
-//   public consumptionlog getconsumptionlogid(Long id){
-//     return obj.findById(id).orElse(null);
-//   }
-//   public List<consumptionlog>getAllconsumptionlogs(){
-//     return obj.findAll();
-//   }
-// }
+  public consumptionlog createconsumptionlog(consumptionlog log){
+    return obj.save(log);
+  }
+  public consumptionlog getconsumptionlogid(Long id){
+    return obj.findById(id).orElse(null);
+  }
+  public List<consumptionlog>getAllconsumptionlogs(){
+    return obj.findAll();
+  }
+}
