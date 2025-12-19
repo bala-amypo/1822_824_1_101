@@ -1,3 +1,3 @@
-public class ConsumptionLogRepository{
+public interface ConsumptionLogRepository extends JpaRepository{
     
 }
