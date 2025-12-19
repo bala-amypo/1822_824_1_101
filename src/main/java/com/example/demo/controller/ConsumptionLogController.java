@@ -15,7 +15,7 @@ import com.example.demo.service.ConsumptionLogService;
 @RestController
 public class ConsumptionLogController{
     @Autowired
-    consumptionLogService clog;
+    ConsumptionLogService clog;
 
     @PostMapping("/addconsumptionlog")
     public consumptionlog addconsumptionlog(@RequestBody consumptionlog conslog){
@@ -34,13 +34,13 @@ public class ConsumptionLogController{
 
     @DeleteMapping("/deleteconsumptionlog/{id}")
     public String deleteconsumptionlogById(@PathVariable Long id){
-        consumptionlog consumptionlog=clog.getpredictionruleById(id);
-        if(predictionrule!=null){
-           pred.deletepredictionruleById(id);
-            return "predictionrule deleted successfully";
+        consumptionlog consumptionlog=clog.getconsumptionlogById(id);
+        if(consumptionlog!=null){
+           clog.deleteconsumptionlogById(id);
+            return "consumptionlog deleted successfully";
         }
         else{
-            return "predictionrule not found.";
+            return "consumptionlog not found.";
         }
     }
 
