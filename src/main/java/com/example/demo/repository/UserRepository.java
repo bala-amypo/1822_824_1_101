@@ -1,4 +1,3 @@
-public interface UserRepository{
-    User createUser(User user);
-    User getUser
+public interface UserRepository extends JpaRepository{
+    
 }

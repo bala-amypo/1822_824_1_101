@@ -1,3 +1,4 @@
-public Interface ProductRepository{
+
+public Interface ProductRepository extends JpaRepository{
     
 }
