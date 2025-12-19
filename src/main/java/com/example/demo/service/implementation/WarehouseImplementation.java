@@ -6,7 +6,7 @@ import com.example.demo.entity.warehouse;
 import com.example.demo.repository.WarehouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class WarehouseImplementation implements WarehouseService{
+public abstract class WarehouseImplementation implements WarehouseService{
   @Autowired
   private WarehouseRepository obj;
 
