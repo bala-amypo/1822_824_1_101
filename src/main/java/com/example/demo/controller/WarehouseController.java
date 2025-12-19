@@ -29,14 +29,14 @@ public class WarehouseController{
 
     @GetMapping("/getwarehouse/{id}")
     public Warehouse getWarehouseById(@PathVariable Long id){
-        return ware.getwarehouseById(id);
+        return ware.getWarehouseById(id);
     }
 
     @DeleteMapping("/deletewarehouse/{id}")
-    public String deletewarehouseById(@PathVariable Long id){
-        warehouse warehouse=ware.getwarehouseById(id);
-        if(warehouse!=null){
-            ware.deletewarehouseById(id);
+    public String deleteWarehouseById(@PathVariable Long id){
+        Warehouse Warehouse=ware.getWarehouseById(id);
+        if(Warehouse!=null){
+            ware.deleteWarehouseById(id);
             return "warehouse deleted successfully";
         }
         else{
