@@ -6,12 +6,12 @@ import com.example.demo.entity.consumptionlog;
 import com.example.demo.repository.ConsumptionLogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class ConsumptionLogImplementation implements ConsumptionLogService{
+public interface ConsumptionLogImplementation implements ConsumptionLogService{
   @Autowired
   ConsumptionLogRepository obj;
 
-  public consumptionlog createconsumptionlog(consumptionlog log){
-    return obj.save(log);
+  public consumptionlog createconsumptionlog(consumptionlog clog){
+    return obj.save(clog);
   }
   public consumptionlog getconsumptionlogid(Long id){
     return obj.findById(id).orElse(null);
