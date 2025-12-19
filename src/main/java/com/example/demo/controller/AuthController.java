@@ -15,7 +15,7 @@ import com.example.demo.service.UserService;
 @RestController
 public class AuthController{
     @Autowired
-    UserService use;
+    private UserService use;
 
     @PostMapping("/adduser")
     public user adduser(@RequestBody user user){
