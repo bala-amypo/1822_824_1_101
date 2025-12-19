@@ -1,3 +1,1 @@
-public class ProductController{
-    
-}
+package com.example.demo
