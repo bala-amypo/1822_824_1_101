@@ -53,7 +53,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
-
+import java.util.Long;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -76,8 +76,8 @@ public class ProductController {
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<Product>> getProducts() {
-        return ResponseEntity.ok(prodService.getProducts());
+    public ResponseEntity<List<Product>> getProduct() {
+        return ResponseEntity.ok(prodService.getProduct());
     }
 
     // READ BY ID

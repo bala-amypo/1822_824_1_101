@@ -99,7 +99,7 @@ public class PredictionController {
         if ( PredictionRule == null) {
             return ResponseEntity.notFound().build();
         }
-        userService.deleteConsumptionLogById(id);
+        predService.deleteConsumptionLogById(id);
         return ResponseEntity.ok("Rule deleted successfully");
     }
 }
