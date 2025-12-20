@@ -73,30 +73,30 @@ public class PredictionController {
     // CREATE
     @PostMapping
     public ResponseEntity<PredictionRule> addPredictionRule(@RequestBody PredictionRule prerule) {
-        return ResponseEntity.ok(PredictionRuleService.addPredictionRule(prerule));
+        return ResponseEntity.ok(predService.addPredictionRule(prerule));
     }
 
     // READ ALL
     @GetMapping
     public ResponseEntity<List<PredictionRule>> getPredictionRules() {
-        return ResponseEntity.ok(PredictionRuleService.getPredictionRules());
+        return ResponseEntity.ok(predService.getPredictionRules());
     }
 
     // READ BY ID
     @GetMapping("/{id}")
     public ResponseEntity<PredictionRule> getPredictionRuleById(@PathVariable Long id) {
-        PredictionRule PredictionRule = Service.getConsumptionLogById(id);
-        if (ConsumptionLog == null) {
+        PredictionRule PredictionRule =predService.getPredictionRuleById(id);
+        if (PredictionRule == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(ConsumptionLog);
+        return ResponseEntity.ok(PredictionRule);
     }
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteConsumptionLogById(@PathVariable Long id) {
-        ConsumptionLog  ConsumptionLog =  ConsumptionLogService.getConsumptionLogById(id);
-        if ( ConsumptionLog == null) {
+    public ResponseEntity<String> deletePredicitonRuleById(@PathVariable Long id) {
+        PredictionRule  PredictionRule =  predService.getPredictionRuleById(id);
+        if ( PredictionRule == null) {
             return ResponseEntity.notFound().build();
         }
         userService.deleteConsumptionLogById(id);
