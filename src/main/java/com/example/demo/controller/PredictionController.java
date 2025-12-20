@@ -1,105 +1,42 @@
-// package com.example.demo.controller;
-
-// import java.util.List;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.DeleteMapping;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RestController;
-
-// import com.example.demo.entity.PredictionRule;
-// import com.example.demo.service.PredictionService;
-
-// @RestController
-// public class PredictionController{
-//     @Autowired
-//     PredictionService pred;
-
-//     @PostMapping("/addprediction")
-//     public PredictionRule addPredictionRule(@RequestBody PredictionRule prediction){
-//         return pred.addPredictionPule(prediction);
-//     }
-
-//     @GetMapping("/getprediction")
-//     public List<PredictionRule> getPredictionRules(){
-//         return pred.getPredictionRules();
-//     }
-
-//     @GetMapping("/getpredicitonrule/{id}")
-//     public PredictionRule getPredictionRuleById(@PathVariable Long id){
-//         return pred.getPredictionRuleById(id);
-//     }
-
-//     @DeleteMapping("/deletepredictionrule/{id}")
-//     public String deletePredictionRuleById(@PathVariable Long id){
-//         PredictionRule PredictionRule=pred.getPredictionRuleById(id);
-//         if(PredictionRule!=null){
-//            pred.deletePredictionRuleById(id);
-//             return "predictionrule deleted successfully";
-//         }
-//         else{
-//             return "predictionrule not found.";
-//         }
-//     }
-
-
-
-
-
-// }
-
-
-
 package com.example.demo.controller;
 
 import java.util.List;
-import java.util.Long;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entity.PredictionRule;
 import com.example.demo.service.PredictionService;
 
 @RestController
-@RequestMapping("/PredictionRules")
+@RequestMapping("/predictionrules")
 public class PredictionController {
 
     @Autowired
-    private PredictionService predService;
+    private PredictionService predictionService;
 
     // CREATE
     @PostMapping
-    public ResponseEntity<PredictionRule> addPredictionRule(@RequestBody PredictionRule prerule) {
-        return ResponseEntity.ok(predService.addPredictionRule(prerule));
+    public PredictionRule addPredictionRule(@RequestBody PredictionRule rule) {
+        return predictionService.addPredictionRule(rule);
     }
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<PredictionRule>> getPredictionRule() {
-        return ResponseEntity.ok(predService.getPredictionRule());
+    public List<PredictionRule> getAllPredictionRules() {
+        return predictionService.getAllPredictionRules();
     }
 
     // READ BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<PredictionRule> getPredictionRuleById(@PathVariable Long id) {
-        PredictionRule PredictionRule =predService.getPredictionRuleById(id);
-        if (PredictionRule == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(PredictionRule);
+    public PredictionRule getPredictionRuleById(@PathVariable Long id) {
+        return predictionService.getPredictionRuleById(id);
     }
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePredicitonRuleById(@PathVariable Long id) {
-        PredictionRule  PredictionRule =  predService.getPredictionRuleById(id);
-        if ( PredictionRule == null) {
-            return ResponseEntity.notFound().build();
-        }
-        predService.deleteConsumptionLogById(id);
-        return ResponseEntity.ok("Rule deleted successfully");
+    public String deletePredictionRule(@PathVariable Long id) {
+        predictionService.deletePredictionRuleById(id);
+        return "Prediction rule deleted successfully";
     }
 }
