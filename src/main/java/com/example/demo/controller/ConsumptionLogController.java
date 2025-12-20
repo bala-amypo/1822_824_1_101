@@ -52,6 +52,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Long;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -70,19 +71,19 @@ public class ConsumptionLogController {
     // CREATE
     @PostMapping
     public ResponseEntity<ConsumptionLog> addConsumptionLog(@RequestBody ConsumptionLog Log) {
-        return ResponseEntity.ok(ConsumptionLogService.addConsumptionLog(Log));
+        return ResponseEntity.ok(clogService.addConsumptionLog(Log));
     }
 
     // READ ALL
     @GetMapping
     public ResponseEntity<List<ConsumptionLog>> getConsumptionLog() {
-        return ResponseEntity.ok(ConsumptionLogService.getConsumptionLog());
+        return ResponseEntity.ok(clogService.getConsumptionLog());
     }
 
     // READ BY ID
     @GetMapping("/{id}")
     public ResponseEntity<ConsumptionLog> getConsumptionLogById(@PathVariable Long id) {
-        ConsumptionLog ConsumptionLog = ConsumptionLogService.getConsumptionLogById(id);
+        ConsumptionLog ConsumptionLog = clogService.getConsumptionLogById(id);
         if (ConsumptionLog == null) {
             return ResponseEntity.notFound().build();
         }
@@ -92,11 +93,11 @@ public class ConsumptionLogController {
     // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteConsumptionLogById(@PathVariable Long id) {
-        ConsumptionLog  ConsumptionLog =  ConsumptionLogService.getConsumptionLogById(id);
+        ConsumptionLog  ConsumptionLog =  clogService.getConsumptionLogById(id);
         if ( ConsumptionLog == null) {
             return ResponseEntity.notFound().build();
         }
-        userService.deleteConsumptionLogById(id);
+        clogService.deleteConsumptionLogById(id);
         return ResponseEntity.ok("User deleted successfully");
     }
 }
