@@ -81,22 +81,22 @@ public class WarehouseController {
     // READ BY ID
     @GetMapping("/{id}")
     public ResponseEntity<Warehouse> getWarehouseById(@PathVariable Long id) {
-        Warerhouse Warehouse =wareService.getProductById(id);
-        if (Product == null) {
+        Warerhouse Warehouse =wareService.getWarehouseById(id);
+        if (Warehouse == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(Product);
+        return ResponseEntity.ok(Warehouse);
     }
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProductById(@PathVariable Long id) {
-        Product  Product =  prodService.getProductById(id);
-        if ( Product == null) {
+    public ResponseEntity<String> deleteWarehouseById(@PathVariable Long id) {
+        Warehouse  Warehouse =  wareService.getWarehouseById(id);
+        if ( Warehouse == null) {
             return ResponseEntity.notFound().build();
         }
-        prodService.deleteProductById(id);
-        return ResponseEntity.ok("Product deleted successfully");
+        wareService.deleteWarehouseById(id);
+        return ResponseEntity.ok("Warehouse deleted successfully");
     }
 }
 
