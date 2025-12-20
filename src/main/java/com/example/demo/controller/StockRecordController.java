@@ -80,23 +80,23 @@ public class StockRecordController {
 
     // READ BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<StockRecord> getProductById(@PathVariable Long id) {
-        Product Product =prodService.getProductById(id);
-        if (Product == null) {
+    public ResponseEntity<StockRecord> getStockRecordById(@PathVariable Long id) {
+        StockRecord StockRecord =stockService.getStockRecordById(id);
+        if (StockRecord == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(Product);
+        return ResponseEntity.ok(StockRecord);
     }
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProductById(@PathVariable Long id) {
-        Product  Product =  prodService.getProductById(id);
-        if ( Product == null) {
+    public ResponseEntity<String> deleteStockRecordById(@PathVariable Long id) {
+        StockRecord  StockRecord =  stockService.getStockRecordById(id);
+        if ( StockRecord == null) {
             return ResponseEntity.notFound().build();
         }
-        prodService.deleteProductById(id);
-        return ResponseEntity.ok("Product deleted successfully");
+        prodService.deleteStockRecordById(id);
+        return ResponseEntity.ok("Stock deleted successfully");
     }
 }
 
