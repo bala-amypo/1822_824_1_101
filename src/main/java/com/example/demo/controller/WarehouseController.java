@@ -56,32 +56,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.warehouse;
-import com.example.demo.service.ProductService;
+import com.example.demo.entity.Warehouse;
+import com.example.demo.service.WarehouseService;
 
 @RestController
-@RequestMapping("/Prouduct")
-public class ProductController {
+@RequestMapping("/Warehouse")
+public class WarehouseController {
 
     @Autowired
-    private ProductService prodService;
+    private WarehouseService wareService;
 
     // CREATE
     @PostMapping
-    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-        return ResponseEntity.ok(prodService.addProduct(product));
+    public ResponseEntity<Warehouse> addWarehouse(@RequestBody Warerhouse warehouse) {
+        return ResponseEntity.ok(wareService.addWarehouse(warehouse));
     }
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<Product>> getProducts() {
-        return ResponseEntity.ok(prodService.getProducts());
+    public ResponseEntity<List<Warehouse>> getWaehouses() {
+        return ResponseEntity.ok(wareService.getWarehouses());
     }
 
     // READ BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
-        Product Product =prodService.getProductById(id);
+    public ResponseEntity<Warehouse> getWarehouseById(@PathVariable Long id) {
+        Warerhouse Warehouse =wareService.getProductById(id);
         if (Product == null) {
             return ResponseEntity.notFound().build();
         }
