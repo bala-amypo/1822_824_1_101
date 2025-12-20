@@ -51,7 +51,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
-
+import java.util.Long;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -74,8 +74,8 @@ public class StockRecordController {
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<StockRecord>> getStockRecords() {
-        return ResponseEntity.ok(stockService.getStockRecords());
+    public ResponseEntity<List<StockRecord>> getStockRecord() {
+        return ResponseEntity.ok(stockService.getStockRecord());
     }
 
     // READ BY ID
@@ -95,7 +95,7 @@ public class StockRecordController {
         if ( StockRecord == null) {
             return ResponseEntity.notFound().build();
         }
-        prodService.deleteStockRecordById(id);
+        stockService.deleteStockRecordById(id);
         return ResponseEntity.ok("Stock deleted successfully");
     }
 }

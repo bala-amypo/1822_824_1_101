@@ -51,7 +51,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
-
+import java,util.Long;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -74,8 +74,8 @@ public class UserController {
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<User>> getUsers() {
-        return ResponseEntity.ok(userService.getUsers());
+    public ResponseEntity<List<User>> getUser() {
+        return ResponseEntity.ok(userService.getUser());
     }
 
     // READ BY ID

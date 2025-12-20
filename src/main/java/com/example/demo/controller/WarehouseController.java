@@ -74,14 +74,14 @@ public class WarehouseController {
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<Warehouse>> getWarehouses() {
-        return ResponseEntity.ok(wareService.getWarehouses());
+    public ResponseEntity<List<Warehouse>> getWarehouse() {
+        return ResponseEntity.ok(wareService.getWarehouse());
     }
 
     // READ BY ID
     @GetMapping("/{id}")
     public ResponseEntity<Warehouse> getWarehouseById(@PathVariable Long id) {
-        Warerhouse Warehouse =wareService.getWarehouseById(id);
+        Warehouse Warehouse =wareService.getWarehouseById(id);
         if (Warehouse == null) {
             return ResponseEntity.notFound().build();
         }
