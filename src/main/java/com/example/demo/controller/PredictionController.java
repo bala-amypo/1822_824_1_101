@@ -55,7 +55,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
-
+import java.util.Long;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -78,8 +78,8 @@ public class PredictionController {
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<PredictionRule>> getPredictionRules() {
-        return ResponseEntity.ok(predService.getPredictionRules());
+    public ResponseEntity<List<PredictionRule>> getPredictionRule() {
+        return ResponseEntity.ok(predService.getPredictionRule());
     }
 
     // READ BY ID
