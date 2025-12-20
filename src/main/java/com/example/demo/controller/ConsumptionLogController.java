@@ -65,23 +65,23 @@ import com.example.demo.service.ConsumptionLogService;
 public class ConsumptionLogController {
 
     @Autowired
-    private UserService userService;
+    private ConsumptionLogService clogService;
 
     // CREATE
     @PostMapping
-    public ResponseEntity<User> addUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.addUser(user));
+    public ResponseEntity<ConsumptionLog> addConsumptionLog(@RequestBody ConsumptiionLog Log) {
+        return ResponseEntity.ok(ConsumptionLogService.addConsumptionLog(Log));
     }
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<User>> getUsers() {
-        return ResponseEntity.ok(userService.getUsers());
+    public ResponseEntity<List<ConsumptionLog>> getConsumptionLogs() {
+        return ResponseEntity.ok(ConsumptionLogService.getConsumptionLogs());
     }
 
     // READ BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+    public ResponseEntity<ConsumptionLog> getUserById(@PathVariable Long id) {
         User user = userService.getUserById(id);
         if (user == null) {
             return ResponseEntity.notFound().build();
