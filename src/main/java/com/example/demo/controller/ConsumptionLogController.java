@@ -81,22 +81,22 @@ public class ConsumptionLogController {
 
     // READ BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<ConsumptionLog> getUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
-        if (user == null) {
+    public ResponseEntity<ConsumptionLog> getConsumptionLogById(@PathVariable Long id) {
+        ConsumptionLog ConsumptionLog = ConsumptionLogService.getConsumptionLogById(id);
+        if (ConsumptionLog == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(ConsumptionLog);
     }
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUserById(@PathVariable Long id) {
-        User user = userService.getUserById(id);
-        if (user == null) {
+    public ResponseEntity<String> deleteConsumptionLogById(@PathVariable Long id) {
+        ConsumptionLog  ConsumptionLog =  ConsumptionLogService.getConsumptionLogById(id);
+        if ( ConsumptionLog == null) {
             return ResponseEntity.notFound().build();
         }
-        userService.deleteUserById(id);
+        userService.deleteConsumptionLogById(id);
         return ResponseEntity.ok("User deleted successfully");
     }
 }
