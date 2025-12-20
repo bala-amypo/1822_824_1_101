@@ -72,20 +72,20 @@ public class PredictionController {
 
     // CREATE
     @PostMapping
-    public ResponseEntity<PredictionRule> add(@RequestBody ConsumptiionLog Log) {
-        return ResponseEntity.ok(ConsumptionLogService.addConsumptionLog(Log));
+    public ResponseEntity<PredictionRule> addPredictionRule(@RequestBody PredictionRule prerule) {
+        return ResponseEntity.ok(PredictionRuleService.addPredictionRule(prerule));
     }
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<ConsumptionLog>> getConsumptionLogs() {
-        return ResponseEntity.ok(ConsumptionLogService.getConsumptionLogs());
+    public ResponseEntity<List<PredictionRule>> getPredictionRules() {
+        return ResponseEntity.ok(PredictionRuleService.getPredictionRules());
     }
 
     // READ BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<ConsumptionLog> getConsumptionLogById(@PathVariable Long id) {
-        ConsumptionLog ConsumptionLog = ConsumptionLogService.getConsumptionLogById(id);
+    public ResponseEntity<PredictionRule> getPredictionRuleById(@PathVariable Long id) {
+        PredictionRule PredictionRule = Service.getConsumptionLogById(id);
         if (ConsumptionLog == null) {
             return ResponseEntity.notFound().build();
         }
