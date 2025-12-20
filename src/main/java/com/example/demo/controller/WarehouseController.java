@@ -68,13 +68,13 @@ public class WarehouseController {
 
     // CREATE
     @PostMapping
-    public ResponseEntity<Warehouse> addWarehouse(@RequestBody Warerhouse warehouse) {
+    public ResponseEntity<Warehouse> addWarehouse(@RequestBody Warehouse warehouse) {
         return ResponseEntity.ok(wareService.addWarehouse(warehouse));
     }
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<Warehouse>> getWaehouses() {
+    public ResponseEntity<List<Warehouse>> getWarehouses() {
         return ResponseEntity.ok(wareService.getWarehouses());
     }
 

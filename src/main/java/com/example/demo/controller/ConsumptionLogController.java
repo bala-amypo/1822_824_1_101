@@ -69,14 +69,14 @@ public class ConsumptionLogController {
 
     // CREATE
     @PostMapping
-    public ResponseEntity<ConsumptionLog> addConsumptionLog(@RequestBody ConsumptiionLog Log) {
+    public ResponseEntity<ConsumptionLog> addConsumptionLog(@RequestBody ConsumptionLog Log) {
         return ResponseEntity.ok(ConsumptionLogService.addConsumptionLog(Log));
     }
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<ConsumptionLog>> getConsumptionLogs() {
-        return ResponseEntity.ok(ConsumptionLogService.getConsumptionLogs());
+    public ResponseEntity<List<ConsumptionLog>> getConsumptionLog() {
+        return ResponseEntity.ok(ConsumptionLogService.getConsumptionLog());
     }
 
     // READ BY ID
