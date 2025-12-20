@@ -47,4 +47,59 @@
 
 
 
+
 // }
+
+
+
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.example.demo.entity.PredictionRule;
+import com.example.demo.service.PredictionService;
+
+@RestController
+@RequestMapping("/PredictionRules")
+public class PredictionController {
+
+    @Autowired
+    private PredictionService predService;
+
+    // CREATE
+    @PostMapping
+    public ResponseEntity<PredictionRule> add(@RequestBody ConsumptiionLog Log) {
+        return ResponseEntity.ok(ConsumptionLogService.addConsumptionLog(Log));
+    }
+
+    // READ ALL
+    @GetMapping
+    public ResponseEntity<List<ConsumptionLog>> getConsumptionLogs() {
+        return ResponseEntity.ok(ConsumptionLogService.getConsumptionLogs());
+    }
+
+    // READ BY ID
+    @GetMapping("/{id}")
+    public ResponseEntity<ConsumptionLog> getConsumptionLogById(@PathVariable Long id) {
+        ConsumptionLog ConsumptionLog = ConsumptionLogService.getConsumptionLogById(id);
+        if (ConsumptionLog == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(ConsumptionLog);
+    }
+
+    // DELETE
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteConsumptionLogById(@PathVariable Long id) {
+        ConsumptionLog  ConsumptionLog =  ConsumptionLogService.getConsumptionLogById(id);
+        if ( ConsumptionLog == null) {
+            return ResponseEntity.notFound().build();
+        }
+        userService.deleteConsumptionLogById(id);
+        return ResponseEntity.ok("User deleted successfully");
+    }
+}
