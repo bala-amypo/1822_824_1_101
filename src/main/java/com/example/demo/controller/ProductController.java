@@ -76,29 +76,29 @@ public class ProductController {
 
     // READ ALL
     @GetMapping
-    public ResponseEntity<List<PredictionRule>> getPredictionRules() {
-        return ResponseEntity.ok(predService.getPredictionRules());
+    public ResponseEntity<List<Product>> getProducts() {
+        return ResponseEntity.ok(prodService.getProducts());
     }
 
     // READ BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<PredictionRule> getPredictionRuleById(@PathVariable Long id) {
-        PredictionRule PredictionRule =predService.getPredictionRuleById(id);
-        if (PredictionRule == null) {
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        Product Product =prodService.getProductById(id);
+        if (Product == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(PredictionRule);
+        return ResponseEntity.ok(Product);
     }
 
     // DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePredicitonRuleById(@PathVariable Long id) {
-        PredictionRule  PredictionRule =  predService.getPredictionRuleById(id);
-        if ( PredictionRule == null) {
+    public ResponseEntity<String> deleteProductById(@PathVariable Long id) {
+        Product  Product =  prodService.getProductById(id);
+        if ( Product == null) {
             return ResponseEntity.notFound().build();
         }
-        userService.deleteConsumptionLogById(id);
-        return ResponseEntity.ok("Rule deleted successfully");
+        prodService.deleteProductById(id);
+        return ResponseEntity.ok("Product deleted successfully");
     }
 }
 
