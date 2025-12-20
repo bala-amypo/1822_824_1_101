@@ -100,6 +100,6 @@ public class PredictionController {
             return ResponseEntity.notFound().build();
         }
         userService.deleteConsumptionLogById(id);
-        return ResponseEntity.ok("User deleted successfully");
+        return ResponseEntity.ok("Rule deleted successfully");
     }
 }
