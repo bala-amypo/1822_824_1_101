@@ -23,22 +23,22 @@ public class Warehouse{
     public void setId(long id){
         this.id=id;
     }
-    public String getwarehouseName(){
+    public String getWarehouseName(){
         return warehouseName;
     }
-    public void setwarehouseName(String warehouseName){
+    public void setWarehouseName(String warehouseName){
         this.warehouseName=warehouseName;
     }
-    public String getlocation(){
+    public String getLocation(){
         return location;
     }
-    public void setlocation(String location){
+    public void setLocation(String location){
         this.location=location;
     }
-    public LocalDateTime getcreatedAt(){
+    public LocalDateTime getCreatedAt(){
         return createdAt;
     }
-    public void setcreatedAt(LocalDateTime createdAt){
+    public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
 

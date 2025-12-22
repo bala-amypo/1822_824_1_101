@@ -20,19 +20,19 @@ public class StockRecord{
     public void setId(long id){
         this.id=id;
     }
-    public int getcurrentQuantity(){
+    public int getCurrentQuantity(){
         return currentQuantity;
     }
-    public void setcurrentQuantity(int currentQuantity){
+    public void setCurrentQuantity(int currentQuantity){
         this.currentQuantity=currentQuantity;
     }
-    public int getreorderThreshold(){
+    public int getReorderThreshold(){
         return reorderThreshold;
     }
-    public void setreorderThreshold(int reorderThreshold){
+    public void setReorderThreshold(int reorderThreshold){
         this.reorderThreshold=reorderThreshold;
     }
-    public LocalDateTime getlastUpdated(){
+    public LocalDateTime getLastUpdated(){
         return lastUpdated;
     }
     public void setlastUpdated(LocalDateTime lastUpdated){

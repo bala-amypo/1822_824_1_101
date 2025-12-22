@@ -23,28 +23,28 @@ public class User{
     public void setId(long id){
         this.id=id;
     }
-    public String getname(){
+    public String getName(){
         return name;
     }
-    public void setname(String name){
+    public void setName(String name){
         this.name=name;
     }
-    public String getemail(){
+    public String getEmail(){
         return email;
     }
-    public void setemail(String email){
+    public void setEmail(String email){
         this.email=email;
     }
-    public String getpassword(){
+    public String getPassword(){
         return password;
     }
-    public void setcategory(String password){
+    public void setPassword(String password){
         this.password=password;
     }
-    public LocalDateTime getcreatedAt(){
+    public LocalDateTime getCreatedAt(){
         return createdAt;
     }
-    public void setcreatedAt(LocalDateTime createdAt){
+    public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
 
