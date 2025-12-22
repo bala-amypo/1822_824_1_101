@@ -22,28 +22,28 @@ public class PredictionRule{
     public void setId(long id){
         this.id=id;
     }
-    public String getruleName(){
+    public String getRuleName(){
         return ruleName;
     }
-    public void setruleName(String ruleName){
+    public void setRuleName(String ruleName){
         this.ruleName=ruleName;
     }
-    public int  getaverageDaysWindows(){
+    public int  getAverageDaysWindows(){
         return averageDaysWindow;
     }
-    public void setaverageDaysWindow(int averageDaysWindow){
+    public void setAverageDaysWindow(int averageDaysWindow){
         this.averageDaysWindow=averageDaysWindow;
     }
-    public int getmaxDailyUsage(){
+    public int getMaxDailyUsage(){
         return maxDailyUsage;
     }
-    public void setmaxDailyUsage(int maxDailyUsage){
+    public void setMaxDailyUsage(int maxDailyUsage){
         this.maxDailyUsage=maxDailyUsage;
     }
-    public LocalDateTime getcreatedAt(){
+    public LocalDateTime getCreatedAt(){
         return createdAt;
     }
-    public void setcreatedAt(LocalDateTime createdAt){
+    public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
      public PredictionRule(long id,String ruleName,int averageDaysWindow,int maxDailyUsage, LocalDateTime createdAt){

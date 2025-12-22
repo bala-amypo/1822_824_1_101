@@ -35,7 +35,7 @@ public class StockRecord{
     public LocalDateTime getLastUpdated(){
         return lastUpdated;
     }
-    public void setlastUpdated(LocalDateTime lastUpdated){
+    public void setLastUpdated(LocalDateTime lastUpdated){
         this.lastUpdated=lastUpdated;
     }
     public StockRecord(){

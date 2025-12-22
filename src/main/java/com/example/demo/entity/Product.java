@@ -25,28 +25,28 @@ public class Product{
     public void setId(long id){
         this.id=id;
     }
-    public String getproductName(){
+    public String getProductName(){
         return productName;
     }
-    public void setproductName(String productName){
+    public void setProductName(String productName){
         this.productName=productName;
     }
-    public String getsku(){
+    public String getSku(){
         return sku;
     }
-    public void setsku(String sku){
+    public void setSku(String sku){
         this.sku=sku;
     }
-    public String getcategory(){
+    public String getCategory(){
         return category;
     }
-    public void setcategory(String category){
+    public void setCategory(String category){
         this.category=category;
     }
-    public LocalDateTime getcreatedAt(){
+    public LocalDateTime getCreatedAt(){
         return createdAt;
     }
-    public void setcreatedAt(LocalDateTime createdAt){
+    public void setCreatedAt(LocalDateTime createdAt){
         this.createdAt=createdAt;
     }
      public Product(long id,String productName,String sku, String category,LocalDateTime createdAt){

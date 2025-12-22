@@ -18,16 +18,16 @@ public class ConsumptionLog{
     public void setId(long id){
         this.id=id;
     }
-    public int getconsumedQuantity(){
+    public int getConsumedQuantity(){
         return consumedQuantity;
     }
-    public void setconsumedQuantity(int consumedQuantity){
+    public void setConsumedQuantity(int consumedQuantity){
         this.consumedQuantity=consumedQuantity;
     }
-    public LocalDateTime getconsumedDate(){
+    public LocalDateTime getConsumedDate(){
         return consumedDate;
     }
-    public void setconsumedDate(LocalDateTime consumedDate){
+    public void setConsumedDate(LocalDateTime consumedDate){
         this.consumedDate=consumedDate;
     }
      public ConsumptionLog(long id,int consumedQuantity,LocalDateTime consumedDate){
