@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PredictionServiceImpl implements PredictionService {
+public abstract class PredictionServiceImpl implements PredictionService {
 
     @Override
     public PredictionRule createPrediction(PredictionRule rule) {
