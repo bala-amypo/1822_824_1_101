@@ -4,7 +4,7 @@ import com.example.demo.model.Product;
 import com.example.demo.service.ProductService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,19 +12,23 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     @Override
-    public PredictionRule createRule(PredictionRule rule) {
-        // dummy implementation for test case
-        return rule;
+    public Product createProduct(Product product) {
+        product.setCreatedAt(LocalDateTime.now());
+        return product;
     }
 
     @Override
-    public List<PredictionRule> getAllRules() {
+    public Product getProduct(Long id) {
+        Product product = new Product();
+        product.setId(id);
+        product.setProductName("Dummy Product");
+        product.setSku("DUMMY-SKU");
+        product.setCreatedAt(LocalDateTime.now());
+        return product;
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
         return new ArrayList<>();
-    }
-
-    @Override
-    public LocalDate predictRestockDate(Long productId) {
-        // test expects LocalDate return
-        return LocalDate.now().plusDays(5);
     }
 }
