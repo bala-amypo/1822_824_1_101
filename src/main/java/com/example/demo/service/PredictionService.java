@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.e.PredictionRule;
+import com.example.demo.entity.PredictionRule;
 
 import java.time.LocalDate;
 import java.util.List;

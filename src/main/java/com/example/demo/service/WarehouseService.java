@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Warehouse;
+import com.example.demo.entity.Warehouse;
 
 import java.util.List;
 
