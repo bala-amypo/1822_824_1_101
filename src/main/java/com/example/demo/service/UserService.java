@@ -6,5 +6,7 @@ public interface UserService {
 
     User register(User user);
 
-    User findByEmail(String email);
+   User user = userRepository.findByEmail(email)
+        .orElseThrow(() -> new RuntimeException("User not found"));
+
 }
