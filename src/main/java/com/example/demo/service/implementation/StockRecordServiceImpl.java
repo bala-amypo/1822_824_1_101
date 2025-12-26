@@ -16,6 +16,11 @@ public class StockRecordServiceImpl implements StockRecordService {
         stockRecord.setCreatedAt(LocalDateTime.now());
         return stockRecord;
     }
+    @Override
+    public List<StockRecord> getRecordsBy_product(Long productId) {
+    return new ArrayList<>();
+}
+
 
     @Override
     public StockRecord getStockRecord(Long id) {
