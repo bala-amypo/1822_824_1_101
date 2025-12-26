@@ -19,7 +19,7 @@ public class WarehouseServiceImpl implements WarehouseService {
     public Warehouse getWarehouse(Long id) {
         Warehouse warehouse = new Warehouse();
         warehouse.setId(id);
-        warehouse.setName("Main Warehouse");
+        warehouse.setWarehouseName("Main warehouse");
         warehouse.setLocation("Chennai");
         return warehouse;
     }
@@ -29,3 +29,4 @@ public class WarehouseServiceImpl implements WarehouseService {
         return new ArrayList<>();
     }
 }
+
