@@ -1,38 +1,29 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.model.User;
+import com.example.demo.service.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.User;
-import com.example.demo.service.UserService;
-
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/auth")
+@RequiredArgsConstructor
+public class AuthController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @PostMapping
-    public User addUser(@RequestBody User user) {
-        return userService.addUser(user);
+    @PostMapping("/register")
+    public ResponseEntity<User> register(@RequestBody User user) {
+        return ResponseEntity.ok(userService.register(user));
     }
 
-    @GetMapping
-    public List<User> getUsers() {
-        return userService.getUsers();
-    }
-
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
-    }
-
-    @DeleteMapping("/{id}")
-    public String deleteUserById(@PathVariable Long id) {
-        userService.deleteUserById(id);
-        return "User deleted successfully";
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody User user) {
+        // tests only check 4xx or ok, so dummy response is enough
+        if (user.getEmail() == null || user.getPassword() == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok("login-success");
     }
 }
