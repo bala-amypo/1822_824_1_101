@@ -4,7 +4,7 @@ import com.example.demo.model.ConsumptionLog;
 import com.example.demo.service.ConsumptionLogService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +14,7 @@ public class ConsumptionLogServiceImpl implements ConsumptionLogService {
     @Override
     public ConsumptionLog logConsumption(Long stockRecordId, ConsumptionLog log) {
 
-        if (log.getConsumedDate() != null &&
-            log.getConsumedDate().isAfter(LocalDate.now())) {
+        if (log.getConsumedDate() != null && log.getConsumedDate().isAfter(LocalDateTime.now())) {
             throw new IllegalArgumentException("consumedDate cannot be future");
         }
 
