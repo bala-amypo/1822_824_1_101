@@ -19,7 +19,16 @@ public class StockRecordServiceImpl implements StockRecordService {
     @Override
     public List<StockRecord> getRecordsBy_product(Long productId) {
     return new ArrayList<>();
+}@Override
+public StockRecord createStockRecord(Long productId, Long warehouseId, StockRecord stockRecord) {
+    return stockRecord;
 }
+
+@Override
+public List<StockRecord> getRecordsBy_product(Long productId) {
+    return new ArrayList<>();
+}
+
 
 
     @Override
