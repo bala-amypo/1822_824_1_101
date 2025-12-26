@@ -30,6 +30,10 @@ public class JwtProvider {
     public String getUsernameFromToken(String token) {
         return extractClaim(token, Claims::getSubject);
     }
+    public String extractUsername(String token) {
+    return getUsernameFromToken(token);
+    }
+
 
     // 🔹 Validate token
     public boolean validateToken(String token) {
