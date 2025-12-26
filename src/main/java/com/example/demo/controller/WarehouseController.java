@@ -1,42 +1,32 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.model.Warehouse;
+import com.example.demo.service.WarehouseService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.Warehouse;
-import com.example.demo.service.WarehouseService;
+import java.util.List;
 
 @RestController
-@RequestMapping("/warehouses")
+@RequestMapping("/api/warehouses")
+@RequiredArgsConstructor
 public class WarehouseController {
 
-    @Autowired
-    private WarehouseService warehouseService;
+    private final WarehouseService warehouseService;
 
-    // CREATE
     @PostMapping
-    public Warehouse addWarehouse(@RequestBody Warehouse warehouse) {
-        return warehouseService.addWarehouse(warehouse);
+    public ResponseEntity<Warehouse> createWarehouse(@RequestBody Warehouse warehouse) {
+        return ResponseEntity.ok(warehouseService.createWarehouse(warehouse));
     }
 
-    // READ ALL
-    @GetMapping
-    public List<Warehouse> getAllWarehouses() {
-        return warehouseService.getAllWarehouses();
-    }
-
-    // READ BY ID
     @GetMapping("/{id}")
-    public Warehouse getWarehouseById(@PathVariable Long id) {
-        return warehouseService.getWarehouseById(id);
+    public ResponseEntity<Warehouse> getWarehouse(@PathVariable Long id) {
+        return ResponseEntity.ok(warehouseService.getWarehouse(id));
     }
 
-    // DELETE
-    @DeleteMapping("/{id}")
-    public String deleteWarehouseById(@PathVariable Long id) {
-        warehouseService.deleteWarehouseById(id);
-        return "Warehouse deleted successfully";
+    @GetMapping
+    public ResponseEntity<List<Warehouse>> getAllWarehouses() {
+        return ResponseEntity.ok(warehouseService.getAllWarehouses());
     }
 }
