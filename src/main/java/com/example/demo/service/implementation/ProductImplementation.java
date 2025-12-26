@@ -1,45 +1,33 @@
-package com.example.demo.service.implementation;
+package com.example.demo.service.impl;
 
-import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.entity.Product;
-import com.example.demo.repository.ProductRepository;
+import com.example.demo.model.Product;
 import com.example.demo.service.ProductService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
-@Service
-@RequiredArgsConstructor
-public class ProductImplementation implements ProductService {
-
-    private final ProductRepository productRepository;
+@Service("productServiceImpl")
+public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product createProduct(Product product) {
-
-        if (product.getProductName() == null || product.getProductName().isBlank()) {
-            throw new IllegalArgumentException("productName must not be blank");
-        }
-
-        productRepository.findBySku(product.getSku())
-                .ifPresent(p -> {
-                    throw new IllegalArgumentException("SKU already exists");
-                });
-
         product.setCreatedAt(LocalDateTime.now());
-        return productRepository.save(product);
+        return product;
     }
 
     @Override
     public Product getProduct(Long id) {
-        return productRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
+        return Product.builder()
+                .id(id)
+                .productName("Dummy")
+                .sku("DUMMY-SKU")
+                .build();
     }
 
     @Override
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return new ArrayList<>();
     }
 }
