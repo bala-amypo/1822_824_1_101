@@ -10,4 +10,5 @@ public interface StockRecordService {
     StockRecord getStockRecord(Long id);
 
     List<StockRecord> getRecordsBy_product(Long productId);
+
 }
