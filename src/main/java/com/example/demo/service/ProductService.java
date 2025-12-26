@@ -1,16 +1,11 @@
 package com.example.demo.service;
 
+import com.example.demo.model.Product;
+
 import java.util.List;
 
-import com.example.demo.entity.Product;
-
 public interface ProductService {
-
-    Product addProduct(Product product);
-
+    Product createProduct(Product product);
+    Product getProduct(Long id);
     List<Product> getAllProducts();
-
-    Product getProductById(Long id);
-
-    void deleteProductById(Long id);
 }
