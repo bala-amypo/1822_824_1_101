@@ -16,7 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class StockRecordServiceImplementation implements StockRecordService {
+public class StockRecordImplementation implements StockRecordService {
 
     private final StockRecordRepository stockRecordRepository;
     private final ProductRepository productRepository;

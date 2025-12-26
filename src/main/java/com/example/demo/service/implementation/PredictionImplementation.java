@@ -17,7 +17,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class PredictionServiceImplementation implements PredictionService {
+public class PredictionImplementation implements PredictionService {
 
     private final PredictionRuleRepository ruleRepository;
     private final StockRecordRepository stockRecordRepository;

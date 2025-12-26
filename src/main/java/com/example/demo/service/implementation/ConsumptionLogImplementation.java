@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ConsumptionLogServiceImplementation implements ConsumptionLogService {
+public class ConsumptionLogImplementation implements ConsumptionLogService {
 
     private final ConsumptionLogRepository consumptionLogRepository;
     private final StockRecordRepository stockRecordRepository;

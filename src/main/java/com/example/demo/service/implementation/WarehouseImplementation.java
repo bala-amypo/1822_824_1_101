@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class WarehouseServiceImplementation implements WarehouseService {
+public class WarehouseImplementation implements WarehouseService {
 
     private final WarehouseRepository warehouseRepository;
 
