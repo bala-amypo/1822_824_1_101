@@ -9,3 +9,4 @@ public interface PredictionService {
     List<PredictionRule> getAllRules();
     LocalDate predictRestockDate(Long productId);
 }
+
