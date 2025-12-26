@@ -1,42 +1,38 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.model.StockRecord;
+import com.example.demo.service.StockRecordService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.StockRecord;
-import com.example.demo.service.StockRecordService;
+import java.util.List;
 
 @RestController
-@RequestMapping("/stockrecords")
+@RequestMapping("/api/stocks")
+@RequiredArgsConstructor
 public class StockRecordController {
 
-    @Autowired
-    private StockRecordService stockRecordService;
+    private final StockRecordService stockRecordService;
 
-    // CREATE
-    @PostMapping
-    public StockRecord addStockRecord(@RequestBody StockRecord stockRecord) {
-        return stockRecordService.addStockRecord(stockRecord);
+    @PostMapping("/{productId}/{warehouseId}")
+    public ResponseEntity<StockRecord> createStockRecord(
+            @PathVariable Long productId,
+            @PathVariable Long warehouseId,
+            @RequestBody StockRecord stockRecord) {
+
+        return ResponseEntity.ok(
+                stockRecordService.createStockRecord(productId, warehouseId, stockRecord)
+        );
     }
 
-    // READ ALL
-    @GetMapping
-    public List<StockRecord> getAllStockRecords() {
-        return stockRecordService.getAllStockRecords();
-    }
-
-    // READ BY ID
     @GetMapping("/{id}")
-    public StockRecord getStockRecordById(@PathVariable Long id) {
-        return stockRecordService.getStockRecordById(id);
+    public ResponseEntity<StockRecord> getStockRecord(@PathVariable Long id) {
+        return ResponseEntity.ok(stockRecordService.getStockRecord(id));
     }
 
-    // DELETE
-    @DeleteMapping("/{id}")
-    public String deleteStockRecordById(@PathVariable Long id) {
-        stockRecordService.deleteStockRecordById(id);
-        return "Stock record deleted successfully";
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<List<StockRecord>> getByProduct(@PathVariable Long productId) {
+        return ResponseEntity.ok(stockRecordService.getRecordsBy_product(productId));
     }
 }
