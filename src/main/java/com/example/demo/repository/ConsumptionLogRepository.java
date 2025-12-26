@@ -1,6 +1,18 @@
-public interface ConsumptionLogRepository extends JpaRepository<ConsumptionLog, Long> {
-    List<ConsumptionLog> findByStockRecordIdAndConsumedDateBetween(
-            Long id, LocalDate start, LocalDate end);
+package com.example.demo.repository;
 
-    List<ConsumptionLog> findByStockRecordIdOrderByConsumedDateDesc(Long id);
+import com.example.demo.model.ConsumptionLog;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public interface ConsumptionLogRepository extends JpaRepository<ConsumptionLog, Long> {
+
+    List<ConsumptionLog> findByStockRecordIdAndConsumedDateBetween(
+            Long stockRecordId,
+            LocalDate startDate,
+            LocalDate endDate
+    );
+
+    List<ConsumptionLog> findByStockRecordIdOrderByConsumedDateDesc(Long stockRecordId);
 }
