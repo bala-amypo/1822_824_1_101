@@ -1,42 +1,36 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.model.ConsumptionLog;
+import com.example.demo.service.ConsumptionLogService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.ConsumptionLog;
-import com.example.demo.service.ConsumptionLogService;
+import java.util.List;
 
 @RestController
-@RequestMapping("/consumptionlogs")
+@RequestMapping("/api/consumption")
+@RequiredArgsConstructor
 public class ConsumptionLogController {
 
-    @Autowired
-    private ConsumptionLogService consumptionLogService;
+    private final ConsumptionLogService consumptionLogService;
 
-    // CREATE
-    @PostMapping
-    public ConsumptionLog addConsumptionLog(@RequestBody ConsumptionLog log) {
-        return consumptionLogService.addConsumptionLog(log);
+    @PostMapping("/{stockRecordId}")
+    public ResponseEntity<ConsumptionLog> logConsumption(
+            @PathVariable Long stockRecordId,
+            @RequestBody ConsumptionLog log) {
+
+        return ResponseEntity.ok(
+                consumptionLogService.logConsumption(stockRecordId, log)
+        );
     }
 
-    // READ ALL
-    @GetMapping
-    public List<ConsumptionLog> getAllConsumptionLogs() {
-        return consumptionLogService.getAllConsumptionLogs();
-    }
+    @GetMapping("/record/{stockRecordId}")
+    public ResponseEntity<List<ConsumptionLog>> getLogs(
+            @PathVariable Long stockRecordId) {
 
-    // READ BY ID
-    @GetMapping("/{id}")
-    public ConsumptionLog getConsumptionLogById(@PathVariable Long id) {
-        return consumptionLogService.getConsumptionLogById(id);
-    }
-
-    // DELETE
-    @DeleteMapping("/{id}")
-    public String deleteConsumptionLog(@PathVariable Long id) {
-        consumptionLogService.deleteConsumptionLogById(id);
-        return "Consumption log deleted successfully";
+        return ResponseEntity.ok(
+                consumptionLogService.getLogsByStockRecord(stockRecordId)
+        );
     }
 }
