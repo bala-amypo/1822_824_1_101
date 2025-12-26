@@ -4,7 +4,7 @@ import com.example.demo.model.ConsumptionLog;
 import com.example.demo.service.ConsumptionLogService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
