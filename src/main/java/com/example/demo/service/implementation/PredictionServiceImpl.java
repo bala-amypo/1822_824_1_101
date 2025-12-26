@@ -4,7 +4,6 @@ import com.example.demo.model.PredictionRule;
 import com.example.demo.service.PredictionService;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,17 +11,21 @@ import java.util.List;
 public class PredictionServiceImpl implements PredictionService {
 
     @Override
-    public PredictionRule createRule(PredictionRule rule) {
+    public PredictionRule createPrediction(PredictionRule rule) {
         return rule;
     }
 
     @Override
-    public List<PredictionRule> getAllRules() {
-        return new ArrayList<>();
+    public PredictionRule getPrediction(Long id) {
+        PredictionRule rule = new PredictionRule();
+        rule.setId(id);
+        rule.setRuleName("Default Rule");
+        rule.setThreshold(50);
+        return rule;
     }
 
     @Override
-    public LocalDate predictRestockDate(Long stockRecordId) {
-        return LocalDate.now().plusDays(5);
+    public List<PredictionRule> getAllPredictions() {
+        return new ArrayList<>();
     }
 }
