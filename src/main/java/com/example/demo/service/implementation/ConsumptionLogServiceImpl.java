@@ -14,12 +14,12 @@ public class ConsumptionLogServiceImpl implements ConsumptionLogService {
     @Override
     public ConsumptionLog logConsumption(Long stockRecordId, ConsumptionLog log) {
 
-        if (log.getConsumedDate() != null && log.getConsumedDate().isAfter(LocalDateTime.now())) {
+        if (log.getConsumedDate() != null && log.getConsumedDate().isAfter(LocalDate.now())) {
             throw new IllegalArgumentException("consumedDate cannot be future");
         }
 
         if (log.getConsumedDate() == null) {
-            log.setConsumedDate(LocalDateTime.now());
+            log.setConsumedDate(LocalDate.now());
         }
 
         return log;
