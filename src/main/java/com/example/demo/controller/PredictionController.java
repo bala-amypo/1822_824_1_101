@@ -1,42 +1,39 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.model.PredictionRule;
+import com.example.demo.service.PredictionService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.entity.PredictionRule;
-import com.example.demo.service.PredictionService;
+import java.time.LocalDate;
+import java.util.List;
 
 @RestController
-@RequestMapping("/predictionrules")
+@RequestMapping("/api/predict")
+@RequiredArgsConstructor
 public class PredictionController {
 
-    @Autowired
-    private PredictionService predictionService;
+    private final PredictionService predictionService;
 
-    // CREATE
-    @PostMapping
-    public PredictionRule addPredictionRule(@RequestBody PredictionRule rule) {
-        return predictionService.addPredictionRule(rule);
+    @PostMapping("/rules")
+    public ResponseEntity<PredictionRule> createRule(
+            @RequestBody PredictionRule rule) {
+
+        return ResponseEntity.ok(predictionService.createRule(rule));
     }
 
-    // READ ALL
-    @GetMapping
-    public List<PredictionRule> getAllPredictionRules() {
-        return predictionService.getAllPredictionRules();
+    @GetMapping("/rules")
+    public ResponseEntity<List<PredictionRule>> getAllRules() {
+        return ResponseEntity.ok(predictionService.getAllRules());
     }
 
-    // READ BY ID
-    @GetMapping("/{id}")
-    public PredictionRule getPredictionRuleById(@PathVariable Long id) {
-        return predictionService.getPredictionRuleById(id);
-    }
+    @GetMapping("/restock-date/{stockRecordId}")
+    public ResponseEntity<LocalDate> predictRestockDate(
+            @PathVariable Long stockRecordId) {
 
-    // DELETE
-    @DeleteMapping("/{id}")
-    public String deletePredictionRule(@PathVariable Long id) {
-        predictionService.deletePredictionRuleById(id);
-        return "Prediction rule deleted successfully";
+        return ResponseEntity.ok(
+                predictionService.predictRestockDate(stockRecordId)
+        );
     }
 }
