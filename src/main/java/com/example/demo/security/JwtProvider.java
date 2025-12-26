@@ -1,46 +1,59 @@
 package com.example.demo.security;
 
-import com.example.demo.entity.User;
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 
 @Component
 public class JwtProvider {
 
-    private final String SECRET_KEY = "exam_secret_key_12345";
-    private final long EXPIRATION_TIME = 1000 * 60 * 60 * 10; // 10 hours
+    private static final String SECRET_KEY = "mySecretKey12345";
+    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hour
 
-    public String generateToken(User user) {
-
+    // 🔹 Generate JWT token
+    public String generateToken(String username) {
         return Jwts.builder()
-                .setSubject(user.getEmail())
-                .claim("roles", user.getRoles()
-                        .stream()
-                        .map(Enum::name)
-                        .collect(Collectors.toList()))
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .setSubject(username)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(
+                        new Date(System.currentTimeMillis() + EXPIRATION_TIME)
+                )
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }
 
-    public String extractEmail(String token) {
-        return getClaims(token).getSubject();
+    // 🔹 Extract username from token
+    public String getUsernameFromToken(String token) {
+        return extractClaim(token, Claims::getSubject);
     }
 
+    // 🔹 Validate token
     public boolean validateToken(String token) {
-        try {
-            getClaims(token);
-            return true;
-        } catch (JwtException | IllegalArgumentException e) {
-            return false;
-        }
+        return !isTokenExpired(token);
     }
 
-    private Claims getClaims(String token) {
+    // 🔹 Check expiration
+    private boolean isTokenExpired(String token) {
+        return extractExpiration(token).before(new Date());
+    }
+
+    // 🔹 Extract expiration
+    private Date extractExpiration(String token) {
+        return extractClaim(token, Claims::getExpiration);
+    }
+
+    // 🔹 Generic claim extractor
+    private <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimsResolver.apply(claims);
+    }
+
+    // 🔹 Parse token
+    private Claims extractAllClaims(String token) {
         return Jwts.parser()
                 .setSigningKey(SECRET_KEY)
                 .parseClaimsJws(token)
