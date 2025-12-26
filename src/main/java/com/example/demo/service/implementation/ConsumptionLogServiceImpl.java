@@ -19,7 +19,7 @@ public class ConsumptionLogServiceImpl implements ConsumptionLogService {
         }
 
         if (log.getConsumedDate() == null) {
-            log.setConsumedDate(LocalDate.now());
+            log.setConsumedDate(LocalDateTime.now());
         }
 
         return log;

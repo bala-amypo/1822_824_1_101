@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("productServiceImpl")
-public class ProductServiceImpl implements ProductService {
+public abstract class ProductServiceImpl implements ProductService {
 
     @Override
     public Product createProduct(Product product) {
