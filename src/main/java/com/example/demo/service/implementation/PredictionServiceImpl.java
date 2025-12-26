@@ -8,24 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public abstract class PredictionServiceImpl implements PredictionService {
+public class PredictionServiceImpl implements PredictionService {
 
-    @Override
-    public PredictionRule createPrediction(PredictionRule rule) {
-        return rule;
-    }
+    public PredictionRule createRule(PredictionRule rule){ return rule; }
+    public List<PredictionRule> getAllRules(){ return new ArrayList<>(); }
 
-    @Override
-    public PredictionRule getPrediction(Long id) {
-        PredictionRule rule = new PredictionRule();
-        rule.setId(id);
-        rule.setRuleName("Default Rule");
-        rule.setThreshold(50);
-        return rule;
-    }
-
-    @Override
-    public List<PredictionRule> getAllPredictions() {
-        return new ArrayList<>();
+    public LocalDate predictRestockDate(Long productId){
+        return LocalDate.now().plusDays(5);
     }
 }
