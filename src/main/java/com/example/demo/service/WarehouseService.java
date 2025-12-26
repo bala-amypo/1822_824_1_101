@@ -1,16 +1,14 @@
 package com.example.demo.service;
 
-import java.util.List;
+import com.example.demo.model.Warehouse;
 
-import com.example.demo.entity.Warehouse;
+import java.util.List;
 
 public interface WarehouseService {
 
-    Warehouse addWarehouse(Warehouse warehouse);
+    Warehouse createWarehouse(Warehouse warehouse);
+
+    Warehouse getWarehouse(Long id);
 
     List<Warehouse> getAllWarehouses();
-
-    Warehouse getWarehouseById(Long id);
-
-    void deleteWarehouseById(Long id);
 }
