@@ -3,7 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.model.PredictionRule;
 import com.example.demo.service.PredictionService;
 import org.springframework.stereotype.Service;
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
