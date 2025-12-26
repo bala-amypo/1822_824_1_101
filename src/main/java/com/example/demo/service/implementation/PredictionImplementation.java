@@ -1,9 +1,9 @@
-package com.example.demo.service.impl;
+package com.example.demo.service.implementation;
 
 import com.example.demo.exception.ResourceNotFoundException;
-import com.example.demo.model.ConsumptionLog;
-import com.example.demo.model.PredictionRule;
-import com.example.demo.model.StockRecord;
+import com.example.demo.entity.ConsumptionLog;
+import com.example.demo.entity.PredictionRule;
+import com.example.demo.entity.StockRecord;
 import com.example.demo.repository.ConsumptionLogRepository;
 import com.example.demo.repository.PredictionRuleRepository;
 import com.example.demo.repository.StockRecordRepository;

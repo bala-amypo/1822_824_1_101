@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.model.ConsumptionLog;
+import com.example.demo.entity.ConsumptionLog;
 
 import java.util.List;
 
