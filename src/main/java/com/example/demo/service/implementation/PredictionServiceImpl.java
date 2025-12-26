@@ -6,14 +6,22 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 @Service
 public class PredictionServiceImpl implements PredictionService {
 
-    public PredictionRule createRule(PredictionRule rule){ return rule; }
-    public List<PredictionRule> getAllRules(){ return new ArrayList<>(); }
+    @Override
+    public PredictionRule createRule(PredictionRule rule) {
+        return rule;
+    }
 
-    public LocalDateTime predictRestockDate(Long productId){
-        return LocalDateTime.now().plusDays(5);
+    @Override
+    public List<PredictionRule> getAllRules() {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public LocalDate predictRestockDate(Long productId) {
+        return LocalDate.now().plusDays(5);
     }
 }
+
