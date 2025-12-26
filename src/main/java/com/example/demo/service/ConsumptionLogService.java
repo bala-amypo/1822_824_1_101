@@ -1,16 +1,14 @@
 package com.example.demo.service;
 
-import java.util.List;
+import com.example.demo.model.ConsumptionLog;
 
-import com.example.demo.entity.ConsumptionLog;
+import java.util.List;
 
 public interface ConsumptionLogService {
 
-    ConsumptionLog addConsumptionLog(ConsumptionLog log);
+    ConsumptionLog logConsumption(Long stockRecordId, ConsumptionLog log);
 
-    List<ConsumptionLog> getAllConsumptionLogs();
+    List<ConsumptionLog> getLogsByStockRecord(Long stockRecordId);
 
-    ConsumptionLog getConsumptionLogById(Long id);
-
-    void deleteConsumptionLogById(Long id);
+    ConsumptionLog getLog(Long id);
 }
