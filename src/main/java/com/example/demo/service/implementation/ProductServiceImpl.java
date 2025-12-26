@@ -19,11 +19,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProduct(Long id) {
-        return Product.builder()
-                .id(id)
-                .productName("Dummy")
-                .sku("DUMMY-SKU")
-                .build();
+        Product product = new Product();   // normal object creation
+        product.setId(id);
+        product.setProductName("Dummy");
+        product.setSku("DUMMY-SKU");
+        return product;
     }
 
     @Override
