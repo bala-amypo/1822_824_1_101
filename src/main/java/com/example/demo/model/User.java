@@ -1,6 +1,18 @@
 package com.example.demo.model;
 
-public enum Role {
-    ROLE_USER,
-    ROLE_ADMIN
+import lombok.*;
+import java.time.LocalDateTime;
+import java.util.Set;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class User {
+    private Long id;
+    private String name;
+    private String email;
+    private String password;
+    private LocalDateTime createdAt;
+    private Set<Role> roles;
 }
