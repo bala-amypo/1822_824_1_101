@@ -13,7 +13,7 @@ public class PredictionServiceImpl implements PredictionService {
     public PredictionRule createRule(PredictionRule rule){ return rule; }
     public List<PredictionRule> getAllRules(){ return new ArrayList<>(); }
 
-    public LocalDate predictRestockDate(Long productId){
-        return LocalDate.now().plusDays(5);
+    public LocalDateTime predictRestockDate(Long productId){
+        return LocalDateTime.now().plusDays(5);
     }
 }
