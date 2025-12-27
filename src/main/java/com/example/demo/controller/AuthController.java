@@ -26,4 +26,20 @@ public class AuthController {
         }
         return ResponseEntity.ok("login-success");
     }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+
+    User user = userRepository.findByEmail(request.getEmail());
+
+    if (user == null) {
+        return ResponseEntity.status(401).body("Invalid credentials");
+    }
+
+    if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        return ResponseEntity.status(401).body("Invalid credentials");
+    }
+
+    return ResponseEntity.ok(jwtUtil.generateToken(user));
+   }
+
 }
