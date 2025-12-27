@@ -1,16 +1,18 @@
 package com.example.demo.controller;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.example.demo.config.JwtProvider;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
-import com.example.demo.config.JwtProvider;
 
 @RestController
 @RequestMapping("/auth")
@@ -25,17 +27,16 @@ public class AuthController {
     @Autowired
     private JwtProvider jwtProvider;
 
-    // ---------- REGISTER ----------
+    // -------- REGISTER --------
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) {
         return ResponseEntity.ok(userService.register(user));
     }
 
-    // ---------- LOGIN ----------
+    // -------- LOGIN --------
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody User user) {
 
-        // basic null check – avoids 500
         if (user.getEmail() == null || user.getPassword() == null) {
             return ResponseEntity.badRequest().build();
         }
@@ -50,8 +51,13 @@ public class AuthController {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
 
-        // success case – token optional, but JwtProvider exists
-        String token = jwtProvider.generateToken(dbUser.getEmail());
+        // ---- FIX IS HERE ----
+        String token = jwtProvider.generateToken(
+                dbUser.getEmail(),
+                dbUser.getId(),
+                Set.of("USER")
+        );
+
         return ResponseEntity.ok(token);
     }
 }
