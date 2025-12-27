@@ -29,4 +29,10 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
     }
+    @PostMapping("/products")
+    public ResponseEntity<Product> createProduct(
+        @Valid @RequestBody Product product) {
+    return ResponseEntity.ok(productService.save(product));
+}
+
 }
