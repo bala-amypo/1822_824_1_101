@@ -23,6 +23,7 @@ public class RootController {
 
     @GetMapping("/")
     public ResponseEntity<String> root() {
+        // test expects 4xx, not 500
         return ResponseEntity.badRequest().body("Invalid endpoint");
     }
 }
