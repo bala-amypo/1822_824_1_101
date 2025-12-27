@@ -18,7 +18,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
+    @Autowired
+    private UserService userService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JwtProvider jwtProvider;
    
 
     @PostMapping("/register")
@@ -26,28 +33,27 @@ public class AuthController {
         return ResponseEntity.ok(userService.register(user));
     }
 
+   
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
-        // tests only check 4xx or ok, so dummy response is enough
-        if (user.getEmail() == null || user.getPassword() == null) {
-            return ResponseEntity.badRequest().build();
-        }
-        return ResponseEntity.ok("login-success");
-    }
-    @PostMapping("/login")
-   public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+public ResponseEntity<?> login(@RequestBody Map<String, String> request) {
 
-    User user = userRepository.findByEmail(request.getEmail());
+    String email = request.get("email");
+    String password = request.get("password");
+
+    User user = userService.findByEmail(email);
 
     if (user == null) {
         return ResponseEntity.status(401).body("Invalid credentials");
     }
 
-    if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+    if (!passwordEncoder.matches(password, user.getPassword())) {
         return ResponseEntity.status(401).body("Invalid credentials");
     }
 
-    return ResponseEntity.ok(jwtUtil.generateToken(user));
-   }
+    // SUCCESS case
+    String token = jwtProvider.generateToken(user.getEmail(), user.getRoles());
+    return ResponseEntity.ok(token);
+}
+
 
 }
