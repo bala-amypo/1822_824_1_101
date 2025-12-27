@@ -11,94 +11,43 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 🔴 VALIDATION MANDATORY
-    @NotBlank
+    @NotBlank(message = "Product name is mandatory")
     private String productName;
 
-    // 🔴 VALIDATION MANDATORY
-    @NotBlank
+    @NotBlank(message = "SKU is mandatory")
     private String sku;
 
     private String category;
 
     private LocalDateTime createdAt;
 
-    // -------- getters & setters --------
-    public Long getId() {
-        return id;
-    }
+    // Getters & setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getProductName() { return productName; }
+    public void setProductName(String productName) { this.productName = productName; }
 
-    public String getProductName() {
-        return productName;
-    }
+    public String getSku() { return sku; }
+    public void setSku(String sku) { this.sku = sku; }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
-    public String getSku() {
-        return sku;
-    }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
-    public void setSku(String sku) {
-        this.sku = sku;
-    }
+    // Builder pattern (optional)
+    public static ProductBuilder builder() { return new ProductBuilder(); }
 
-    public String getCategory() {
-        return category;
-    }
+    public static class ProductBuilder {
+        private Product p = new Product();
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    // -------- MANUAL BUILDER --------
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public static class Builder {
-        private final Product p = new Product();
-
-        public Builder id(Long id) {
-            p.setId(id);
-            return this;
-        }
-
-        public Builder productName(String v) {
-            p.setProductName(v);
-            return this;
-        }
-
-        public Builder sku(String v) {
-            p.setSku(v);
-            return this;
-        }
-
-        public Builder category(String v) {
-            p.setCategory(v);
-            return this;
-        }
-
-        public Builder createdAt(LocalDateTime v) {
-            p.setCreatedAt(v);
-            return this;
-        }
-
-        public Product build() {
-            return p;
-        }
+        public ProductBuilder id(Long id) { p.setId(id); return this; }
+        public ProductBuilder productName(String name) { p.setProductName(name); return this; }
+        public ProductBuilder sku(String sku) { p.setSku(sku); return this; }
+        public ProductBuilder category(String cat) { p.setCategory(cat); return this; }
+        public ProductBuilder createdAt(LocalDateTime dt) { p.setCreatedAt(dt); return this; }
+        public Product build() { return p; }
     }
 }
