@@ -27,7 +27,7 @@ public class AuthController {
         return ResponseEntity.ok("login-success");
     }
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+   public ResponseEntity<?> login(@RequestBody LoginRequest request) {
 
     User user = userRepository.findByEmail(request.getEmail());
 
