@@ -1,4 +1,4 @@
-package com.example.demo.src.java.test_saved;
+package com.example.demo;
 
 import com.example.demo.model.*;
 import com.example.demo.repository.*;

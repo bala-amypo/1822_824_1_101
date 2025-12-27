@@ -1,4 +1,4 @@
-package com.example.demo.src.java.;
+package com.example.demo;
  
 import org.testng.ITestListener;
 import org.testng.ITestResult;
