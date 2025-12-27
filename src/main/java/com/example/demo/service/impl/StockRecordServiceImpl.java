@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.StockRecord;
@@ -29,5 +31,11 @@ public class StockRecordServiceImpl implements StockRecordService {
         }
 
         return stockRecordRepository.save(stockRecord);
+    }
+
+    // 🔥 THIS METHOD WAS MISSING — idhaan error kaaranam
+    @Override
+    public List<StockRecord> getRecordsBy_product(Long productId) {
+        return stockRecordRepository.findByProductId(productId);
     }
 }
