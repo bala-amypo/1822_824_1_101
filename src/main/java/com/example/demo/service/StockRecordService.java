@@ -5,7 +5,9 @@ import com.example.demo.model.StockRecord;
 
 public interface StockRecordService {
 
-    StockRecord createStockRecord(StockRecord stockRecord);
+    StockRecord createStockRecord(Long productId, Long warehouseId, StockRecord stockRecord);
+
+    StockRecord getStockRecord(Long id);
 
     List<StockRecord> getRecordsBy_product(Long productId);
 }
