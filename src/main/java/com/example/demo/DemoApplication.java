@@ -9,3 +9,5 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 }
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+System.out.println(new BCryptPasswordEncoder().encode("12345"));
