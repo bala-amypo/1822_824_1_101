@@ -33,7 +33,7 @@
 //         );
 //     }
 // }
-package com.example.demo.security;
+package com.example.demo.config;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
