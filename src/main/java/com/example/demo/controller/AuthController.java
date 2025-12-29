@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.config.JwtProvider;
-import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,68 +8,62 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
     private UserRepository userRepository;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private JwtProvider jwtProvider;
 
-    // ✅ REGISTER
+    // ================= REGISTER =================
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) {
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setCreatedAt(LocalDateTime.now());
 
-        // default role
         if (user.getRoles() == null || user.getRoles().isEmpty()) {
-            user.setRoles(Set.of(Role.ROLE_USER));
+            user.setRoles(List.of("ROLE_USER"));
         }
 
-        User saved = userRepository.save(user);
-        return ResponseEntity.ok(saved);
+        User savedUser = userRepository.save(user);
+        return ResponseEntity.ok(savedUser);
     }
 
-    // ✅ LOGIN (THIS WAS BROKEN EARLIER)
+    // ================= LOGIN =================
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+        Authentication authentication =
+                authenticationManager.authenticate(
+                        new UsernamePasswordAuthenticationToken(
+                                request.getEmail(),
+                                request.getPassword()
+                        )
+                );
 
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        User user = userRepository
-                .findByEmail(request.getEmail())
-                .orElseThrow();
-
-        // 🔥 THIS IS THE ACTUAL FIX 🔥
-        String token = jwtProvider.generateToken(
-                user.getEmail(),
-                user.getId(),
-                user.getRoles()
-        );
+        // 🔥 CORRECT METHOD CALL
+        String token = jwtProvider.generateToken(authentication);
 
         return ResponseEntity.ok(token);
     }
 
-    // ✅ INNER DTO (IMPORTANT)
+    // ================= DTO =================
     public static class LoginRequest {
         private String email;
         private String password;
