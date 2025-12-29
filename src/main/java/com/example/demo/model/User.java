@@ -5,6 +5,22 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
+// public class User {
+
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
+
+//     private String name;
+//     @Column
+//     private String email;
+//     private String password;
+//     private LocalDateTime createdAt;
+
+//     @ElementCollection(fetch = FetchType.EAGER)
+//     @Enumerated(EnumType.STRING)
+//     private Set<Role> roles;
+@Entity
 public class User {
 
     @Id
@@ -12,13 +28,20 @@ public class User {
     private Long id;
 
     private String name;
+
+    @Column(unique = true)
     private String email;
+
     private String password;
+
     private LocalDateTime createdAt;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    private List<String> roles;
+
+   
+
+
 
     // getters/setters
     public Long getId(){ return id; }
