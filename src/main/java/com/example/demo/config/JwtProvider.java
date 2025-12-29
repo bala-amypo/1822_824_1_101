@@ -2,40 +2,33 @@ package com.example.demo.config;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Component
 public class JwtProvider {
 
+    // 🔐 minimum 256-bit secret
     private final Key key =
             Keys.hmacShaKeyFor("mysecretkeymysecretkeymysecretkey".getBytes());
 
-    // 🔥 THIS METHOD IS REQUIRED (AuthController EXPECTS THIS)
-    public String generateToken(Authentication authentication) {
-
-        String email = authentication.getName();
-
-        Set<String> roles = authentication.getAuthorities()
-                .stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toSet());
+    // ================= GENERATE TOKEN =================
+    public String generateToken(String email, Long userId, Set<?> roles) {
 
         return Jwts.builder()
                 .setSubject(email)
+                .claim("userId", userId)
                 .claim("roles", roles)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) // 1 day
                 .signWith(key)
                 .compact();
     }
 
+    // ================= VALIDATE TOKEN =================
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder()
@@ -48,6 +41,7 @@ public class JwtProvider {
         }
     }
 
+    // ================= GET EMAIL =================
     public String getEmailFromToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
@@ -55,5 +49,19 @@ public class JwtProvider {
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
+    }
+
+    // ================= GET USER ID =================
+    public Long getUserId(String token) {
+        try {
+            return Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody()
+                    .get("userId", Long.class);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
