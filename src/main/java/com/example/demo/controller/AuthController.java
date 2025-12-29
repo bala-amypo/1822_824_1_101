@@ -1,184 +1,84 @@
-// package com.example.demo.controller;
-
-// import java.util.Set;
-
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.http.ResponseEntity;
-// import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.RestController;
-// import com.example.demo.repository.UserRepository;
-
-// import com.example.demo.config.JwtProvider;
-// import com.example.demo.model.User;
-// import com.example.demo.service.UserService;
-
-
-// // @RestController
-// // @RequestMapping("/auth")
-// // public class AuthController {
-
-// //     @Autowired
-// //     private UserService userService;
-
-// //     @Autowired
-// //     private PasswordEncoder passwordEncoder;
-
-// //     @Autowired
-// //     private JwtProvider jwtProvider;
-
-// //     // -------- REGISTER --------
-// //     @PostMapping("/register")
-// //     public ResponseEntity<User> register(@RequestBody User user) {
-// //         return ResponseEntity.ok(userService.register(user));
-// //     }
-
-// //     // -------- LOGIN --------
-// //     @PostMapping("/login")
-// //     public ResponseEntity<String> login(@RequestBody User user) {
-
-// //         if (user.getEmail() == null || user.getPassword() == null) {
-// //             return ResponseEntity.badRequest().build();
-// //         }
-
-// //         User dbUser = userService.findByEmail(user.getEmail());
-
-// //         if (dbUser == null) {
-// //             return ResponseEntity.status(401).body("Invalid credentials");
-// //         }
-
-// //         if (!passwordEncoder.matches(user.getPassword(), dbUser.getPassword())) {
-// //             return ResponseEntity.status(401).body("Invalid credentials");
-// //         }
-
-// //         // ---- FIX IS HERE ----
-// //         String token = jwtProvider.generateToken(
-// //                 dbUser.getEmail(),
-// //                 dbUser.getId(),
-// //                 Set.of("USER")
-// //         );
-
-// //         return ResponseEntity.ok(token);
-// //     }
-// // }
-// @RestController
-// @RequestMapping("/auth")
-// public class AuthController {
-
-//     private final UserRepository userRepository;
-//     private final PasswordEncoder passwordEncoder;
-//     private final AuthenticationManager authenticationManager;
-//     private final JwtUtils jwtUtils;
-
-//     public AuthController(UserRepository userRepository,
-//                           PasswordEncoder passwordEncoder,
-//                           AuthenticationManager authenticationManager,
-//                           JwtUtils jwtUtils) {
-//         this.userRepository = userRepository;
-//         this.passwordEncoder = passwordEncoder;
-//         this.authenticationManager = authenticationManager;
-//         this.jwtUtils = jwtUtils;
-//     }
-
-//     // ✅ REGISTER
-//     @PostMapping("/register")
-//     public ResponseEntity<User> register(@RequestBody User user) {
-
-//         user.setPassword(passwordEncoder.encode(user.getPassword()));
-//         user.setCreatedAt(LocalDateTime.now());
-
-//         return ResponseEntity.ok(userRepository.save(user));
-//     }
-
-//     // ✅ LOGIN
-//     @PostMapping("/login")
-//     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-
-//         Authentication authentication =
-//                 authenticationManager.authenticate(
-//                         new UsernamePasswordAuthenticationToken(
-//                                 request.getEmail(),
-//                                 request.getPassword()
-//                         )
-//                 );
-
-//         SecurityContextHolder.getContext().setAuthentication(authentication);
-
-//         String token = jwtUtils.generateToken(request.getEmail());
-
-//         return ResponseEntity.ok(token);
-//     }
-// }
 package com.example.demo.controller;
 
-import com.example.demo.dto.LoginRequest;
-
+import com.example.demo.config.JwtProvider;
+import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.config.JwtProvider;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.time.LocalDateTime;
-
+import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager;
-    private final JwtProvider jwtProvider;
+    @Autowired
+    private UserRepository userRepository;
 
-    public AuthController(UserRepository userRepository,
-                          PasswordEncoder passwordEncoder,
-                          AuthenticationManager authenticationManager,
-                          JwtProvider jwtProvider) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-        this.authenticationManager = authenticationManager;
-        this.jwtProvider = jwtProvider;
-    }
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtProvider jwtProvider;
 
     // ✅ REGISTER
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) {
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setCreatedAt(LocalDateTime.now());
 
-        return ResponseEntity.ok(userRepository.save(user));
+        // default role
+        if (user.getRoles() == null || user.getRoles().isEmpty()) {
+            user.setRoles(Set.of(Role.ROLE_USER));
+        }
+
+        User saved = userRepository.save(user);
+        return ResponseEntity.ok(saved);
     }
 
-    // ✅ LOGIN
+    // ✅ LOGIN (THIS WAS BROKEN EARLIER)
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
 
-        Authentication authentication =
-                authenticationManager.authenticate(
-                        new UsernamePasswordAuthenticationToken(
-                                request.getEmail(),
-                                request.getPassword()
-                        )
-                );
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        request.getEmail(),
+                        request.getPassword()
+                )
+        );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // 🔐 Generate JWT using EXISTING JwtProvider
-        // String token = jwtProvider.generateToken(authentication);
-        String token = jwtProvider.generateToken(authentication);
+        User user = userRepository
+                .findByEmail(request.getEmail())
+                .orElseThrow();
 
+        // 🔥 THIS IS THE ACTUAL FIX 🔥
+        String token = jwtProvider.generateToken(
+                user.getEmail(),
+                user.getId(),
+                user.getRoles()
+        );
 
         return ResponseEntity.ok(token);
+    }
+
+    // ✅ INNER DTO (IMPORTANT)
+    public static class LoginRequest {
+        private String email;
+        private String password;
+
+        public String getEmail() { return email; }
+        public void setEmail(String email) { this.email = email; }
+
+        public String getPassword() { return password; }
+        public void setPassword(String password) { this.password = password; }
     }
 }
