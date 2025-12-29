@@ -1,26 +1,69 @@
+// package com.example.demo.config;
+
+// import org.springframework.stereotype.Component;
+
+// import java.util.Set;
+
+// @Component
+// public class JwtProvider {
+
+//     public String generateToken(String email, Long userId, Set<String> roles) {
+//         // test case expects this exact behavior
+//         return "fake.jwt.token";
+//     }
+
+//     public boolean validateToken(String token) {
+//         return true;
+//     }
+
+//     public String getEmailFromToken(String token) {
+//         return "u@u.com";
+//     }
+
+//     public Long getUserId(String token) {
+//         return 1L;
+//     }
+// }
 package com.example.demo.config;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
+import java.security.Key;
+import java.util.Date;
 
 @Component
 public class JwtProvider {
 
-    public String generateToken(String email, Long userId, Set<String> roles) {
-        // test case expects this exact behavior
-        return "fake.jwt.token";
+    // 🔐 Secret key (minimum 256-bit)
+    private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+    // ⏰ Token validity (1 day)
+    private final long jwtExpirationMs = 86400000;
+
+    // ✅ MAIN METHOD – IDHU DHAAN MISS AAYIRUKKU
+    public String generateToken(Authentication authentication) {
+
+        String email = authentication.getName();
+
+        return Jwts.builder()
+                .setSubject(email)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(new Date().getTime() + jwtExpirationMs))
+                .signWith(key)
+                .compact();
     }
 
-    public boolean validateToken(String token) {
-        return true;
-    }
-
+    // (Optional – future use)
     public String getEmailFromToken(String token) {
-        return "u@u.com";
-    }
-
-    public Long getUserId(String token) {
-        return 1L;
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
 }
