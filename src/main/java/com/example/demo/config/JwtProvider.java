@@ -11,37 +11,29 @@ import java.util.Set;
 @Component
 public class JwtProvider {
 
-    // 🔐 minimum 256-bit secret
     private final Key key =
             Keys.hmacShaKeyFor("mysecretkeymysecretkeymysecretkey".getBytes());
 
-    // ================= GENERATE TOKEN =================
     public String generateToken(String email, Long userId, Set<?> roles) {
-
         return Jwts.builder()
                 .setSubject(email)
                 .claim("userId", userId)
                 .claim("roles", roles)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) // 1 day
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
                 .signWith(key)
                 .compact();
     }
 
-    // ================= VALIDATE TOKEN =================
     public boolean validateToken(String token) {
         try {
-            Jwts.parserBuilder()
-                    .setSigningKey(key)
-                    .build()
-                    .parseClaimsJws(token);
+            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
         } catch (Exception e) {
             return false;
         }
     }
 
-    // ================= GET EMAIL =================
     public String getEmailFromToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key)
@@ -51,7 +43,6 @@ public class JwtProvider {
                 .getSubject();
     }
 
-    // ================= GET USER ID =================
     public Long getUserId(String token) {
         try {
             return Jwts.parserBuilder()
