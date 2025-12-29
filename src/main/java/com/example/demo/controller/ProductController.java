@@ -2,32 +2,26 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Product;
 import com.example.demo.service.ProductService;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import jakarta.validation.Valid; // Import this
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
+@RequiredArgsConstructor
 public class ProductController {
-
-    @Autowired
-    private ProductService productService;
+    private final ProductService service;
 
     @PostMapping
-    public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
-        Product saved = productService.createProduct(product);
-        return ResponseEntity.ok(saved);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Product> getProduct(@PathVariable Long id) {
-        Product p = productService.getProduct(id);
-        return ResponseEntity.ok(p);
+    // FIX: Add @Valid here to trigger the 400 Bad Request on invalid input
+    public Product create(@RequestBody @Valid Product p) { 
+        return service.createProduct(p); 
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllProducts() {
-        return ResponseEntity.ok(productService.getAllProducts());
-    }
+    public List<Product> getAll() { return service.getAllProducts(); }
+    
+    @GetMapping("/{id}")
+    public Product get(@PathVariable Long id) { return service.getProduct(id); }
 }
