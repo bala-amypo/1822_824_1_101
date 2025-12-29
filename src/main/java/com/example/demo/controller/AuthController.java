@@ -172,7 +172,9 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         // 🔐 Generate JWT using EXISTING JwtProvider
+        // String token = jwtProvider.generateToken(authentication);
         String token = jwtProvider.generateToken(authentication);
+
 
         return ResponseEntity.ok(token);
     }
