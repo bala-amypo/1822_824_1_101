@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.config.JwtProvider;
+import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
@@ -37,8 +39,9 @@ public class AuthController {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setCreatedAt(LocalDateTime.now());
 
+        // 🔥 FIX: Set<Role>
         if (user.getRoles() == null || user.getRoles().isEmpty()) {
-            user.setRoles(List.of("ROLE_USER"));
+            user.setRoles(Set.of(Role.ROLE_USER));
         }
 
         User savedUser = userRepository.save(user);
@@ -57,8 +60,13 @@ public class AuthController {
                         )
                 );
 
-        // 🔥 CORRECT METHOD CALL
-        String token = jwtProvider.generateToken(authentication);
+        User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
+
+        String token = jwtProvider.generateToken(
+                user.getEmail(),
+                user.getId(),
+                user.getRoles()
+        );
 
         return ResponseEntity.ok(token);
     }
