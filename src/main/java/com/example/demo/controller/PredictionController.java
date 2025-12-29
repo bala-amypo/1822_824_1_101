@@ -1,39 +1,25 @@
 package com.example.demo.controller;
-
 import com.example.demo.model.PredictionRule;
 import com.example.demo.service.PredictionService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/predict")
 @RequiredArgsConstructor
 public class PredictionController {
+    private final PredictionService service;
 
-    private final PredictionService predictionService;
-
+    @GetMapping("/restock-date/{sid}")
+    public String predict(@PathVariable Long sid) {
+        LocalDate date = service.predictRestockDate(sid);
+        return date.toString(); // Returning string to match test expectation
+    }
     @PostMapping("/rules")
-    public ResponseEntity<PredictionRule> createRule(
-            @RequestBody PredictionRule rule) {
-
-        return ResponseEntity.ok(predictionService.createRule(rule));
-    }
-
+    public PredictionRule createRule(@RequestBody PredictionRule r) { return service.createRule(r); }
     @GetMapping("/rules")
-    public ResponseEntity<List<PredictionRule>> getAllRules() {
-        return ResponseEntity.ok(predictionService.getAllRules());
-    }
-
-    @GetMapping("/restock-date/{stockRecordId}")
-    public ResponseEntity<LocalDate> predictRestockDate(
-            @PathVariable Long stockRecordId) {
-
-        return ResponseEntity.ok(
-                predictionService.predictRestockDate(stockRecordId)
-        );
-    }
+    public List<PredictionRule> getAllRules() { return service.getAllRules(); }
 }
