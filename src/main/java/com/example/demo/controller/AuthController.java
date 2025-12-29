@@ -5,16 +5,12 @@ import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/auth")
@@ -24,51 +20,38 @@ public class AuthController {
     private UserRepository userRepository;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
     private JwtProvider jwtProvider;
 
-    // ========= REGISTER =========
+    // REGISTER
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
+    public ResponseEntity<?> register(@RequestBody Map<String, String> req) {
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User user = new User();
+        user.setName(req.get("name"));
+        user.setEmail(req.get("email"));
+        user.setPassword(req.get("password"));
         user.setCreatedAt(LocalDateTime.now());
 
-        if (user.getRoles() == null || user.getRoles().isEmpty()) {
-            user.setRoles(List.of("ROLE_USER")); // ✅ ONLY THIS
-        }
+        // 🔥 THIS IS THE FIX (LINE 43 PROBLEM)
+        user.setRoles(List.of("ROLE_USER"));
 
-        return ResponseEntity.ok(userRepository.save(user));
+        userRepository.save(user);
+        return ResponseEntity.ok("User registered");
     }
 
-    // ========= LOGIN =========
+    // LOGIN
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> req) {
 
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        req.get("email"),
-                        req.get("password")
-                )
-        );
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
         User user = userRepository.findByEmail(req.get("email"))
-                .orElseThrow();
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
         String token = jwtProvider.generateToken(
                 user.getEmail(),
                 user.getId(),
-                user.getRoles()
+                Set.copyOf(user.getRoles())
         );
 
         return ResponseEntity.ok(Map.of("token", token));
     }
 }
-
