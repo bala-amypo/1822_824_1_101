@@ -32,7 +32,7 @@ public class AuthController {
     @Autowired
     private JwtProvider jwtProvider;
 
-    // ================= REGISTER =================
+    // ========= REGISTER =========
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) {
 
@@ -40,34 +40,35 @@ public class AuthController {
         user.setCreatedAt(LocalDateTime.now());
 
         if (user.getRoles() == null || user.getRoles().isEmpty()) {
-            user.setRoles(List.of("ROLE_USER"));
+            user.setRoles(List.of("ROLE_USER")); // ✅ ONLY THIS
         }
 
         return ResponseEntity.ok(userRepository.save(user));
     }
 
-    // ================= LOGIN =================
+    // ========= LOGIN =========
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Map<String, String> request) {
+    public ResponseEntity<?> login(@RequestBody Map<String, String> req) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.get("email"),
-                        request.get("password")
+                        req.get("email"),
+                        req.get("password")
                 )
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        User user = userRepository.findByEmail(request.get("email"))
+        User user = userRepository.findByEmail(req.get("email"))
                 .orElseThrow();
 
         String token = jwtProvider.generateToken(
                 user.getEmail(),
                 user.getId(),
-                user.getRoles()   // ✅ List<String>
+                user.getRoles()
         );
 
         return ResponseEntity.ok(Map.of("token", token));
     }
 }
+
