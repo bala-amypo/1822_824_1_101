@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.List;
 
 
-@Entity
+// @Entity
 // public class User {
 
 //     @Id
@@ -39,8 +39,10 @@ public class User {
 
     private LocalDateTime createdAt;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> roles;
+   @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles;   
+
+
 
    
 
